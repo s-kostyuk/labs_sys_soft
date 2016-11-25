@@ -45,18 +45,20 @@ namespace lab2_v2_new
 
             student = new UniversityStudent(
                 name, surname, patronymic, course, birthday, scholarship, balance
-            );   
+            );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void InitNegativeScholarship()
         {
             UniversityStudent student;
 
-            student = new UniversityStudent(
-                name, surname, patronymic, course, birthday, -100, balance
-            );
+            Assert.That(() =>
+            {
+                student = new UniversityStudent(
+                    name, surname, patronymic, course, birthday, -100, balance
+                );
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
@@ -90,7 +92,6 @@ namespace lab2_v2_new
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void SetNegativeMark()
         {
             UniversityStudent student;
@@ -99,11 +100,15 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.SetMark(0, -1);
+
+            Assert.That(() =>
+            {
+                student.SetMark(0, -1);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
+
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void SetBigMark()
         {
             UniversityStudent student;
@@ -112,11 +117,13 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.SetMark(0, 6);
+            Assert.That(() =>
+            {
+                student.SetMark(0, 6);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void SetNegativeMarkIndex()
         {
             UniversityStudent student;
@@ -125,11 +132,13 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.SetMark(-1, 5);
+            Assert.That(() =>
+            {
+                student.SetMark(-1, 5);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void SetBigMarkIndex()
         {
             UniversityStudent student;
@@ -138,11 +147,14 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.SetMark(UniversityStudent.N_OF_SUBJECTS, 5);
+            Assert.That(() =>
+            {
+                student.SetMark(UniversityStudent.N_OF_SUBJECTS, 5);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
+
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GetNegativeMarkIndex()
         {
             UniversityStudent student;
@@ -151,11 +163,13 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.GetMark(-1);
+            Assert.That(() =>
+            {
+                student.GetMark(-1);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GetBigMarkIndex()
         {
             UniversityStudent student;
@@ -164,7 +178,10 @@ namespace lab2_v2_new
                 name, surname, patronymic, course, birthday, scholarship, balance
             );
 
-            student.GetMark(UniversityStudent.N_OF_SUBJECTS);
+            Assert.That(() =>
+            {
+                student.GetMark(UniversityStudent.N_OF_SUBJECTS);
+            }, Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
@@ -184,7 +201,6 @@ namespace lab2_v2_new
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void AddScholarshipWithBadMarks()
         {
             UniversityStudent student;
@@ -195,7 +211,10 @@ namespace lab2_v2_new
 
             FillAllMarks(ref student, 3);
 
-            student.AddScholarship();
+            Assert.That(() =>
+            {
+                student.AddScholarship();
+            }, Throws.TypeOf<ArgumentException>());
         }
 
 
@@ -222,7 +241,6 @@ namespace lab2_v2_new
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void WithdrawTooMuchMoney()
         {
             UniversityStudent student;
@@ -235,7 +253,13 @@ namespace lab2_v2_new
 
             student.AddScholarship();
 
-            student.Withdraw(scholarship + 1);
+            Assert.That(
+                () =>
+                {
+                    student.Withdraw(scholarship + 1);
+                }, Throws.TypeOf<ArgumentOutOfRangeException>());
+
+
         }
 
         [Test]
@@ -266,7 +290,7 @@ namespace lab2_v2_new
             FillAllMarks(ref student, 4);
 
             Assert.AreNotEqual(student.course, 0);
-            
+
             for (int i = 0; i < UniversityStudent.N_OF_SUBJECTS; i++)
             {
                 Assert.AreNotEqual(student.GetMark(i), 0);
