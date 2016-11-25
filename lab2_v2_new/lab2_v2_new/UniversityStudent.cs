@@ -122,7 +122,7 @@ namespace lab2_v2_new
 
             try
             {
-                marks.SetValue(_value, _subject_id);
+                marks[_subject_id] = _value;
             }
             catch (IndexOutOfRangeException)
             {
@@ -130,11 +130,10 @@ namespace lab2_v2_new
             }
         }
 
-        // FIXME: Review return value
-        public object GetMark(int _subject_id)
+        public int GetMark(int _subject_id)
         {
             try {
-                return marks.GetValue(_subject_id);
+                return marks[_subject_id];
             }
             catch (IndexOutOfRangeException)
             {
