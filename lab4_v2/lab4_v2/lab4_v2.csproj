@@ -36,12 +36,12 @@
     <Compile Include="Forms\EditProgram.cs" />
     <Compile Include="Forms\EditUser.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="ProgramManager.cs" />
-    <Compile Include="Tests\TestProgram.cs" />
     <Compile Include="MainFile.cs" />
     <Compile Include="Tests\TestUser.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="AppManager.cs" />
+    <Compile Include="Tests\TestApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />

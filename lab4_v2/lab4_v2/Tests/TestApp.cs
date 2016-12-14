@@ -4,7 +4,7 @@ using System;
 namespace lab4_v2
 {
 	[TestFixture ()]
-	public class TestProgram
+	public class TestApplication
 	{
 		/**********************************************************************************/
 
@@ -18,7 +18,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestNameChange ()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			string target_name = "some name";
 
@@ -31,7 +31,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestEmptyNameChange()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			Assert.That ( () => {
 				p.name = "";
@@ -45,7 +45,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeNegativeFreq()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			Assert.That ( () => {
 				p.min_cpu_freq = -1;
@@ -59,7 +59,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeNegativeRam()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			Assert.That ( () => {
 				p.min_ram = -1;
@@ -73,7 +73,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeGpuMem()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			Assert.That ( () => {
 				p.min_gpu_mem = -1;
@@ -87,7 +87,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeNegativeVersion()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			Assert.That ( () => {
 				p.version = -1;
@@ -101,7 +101,7 @@ namespace lab4_v2
 		[Test()]
 		public void CheckOnVersionChanged()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			bool is_called = false;
 			double new_version = 1.0;
@@ -109,7 +109,7 @@ namespace lab4_v2
 			p.VersionChanged += (o, e) => { 
 				is_called = true;
 
-				Assert.IsInstanceOf(typeof(Program), o);
+				Assert.IsInstanceOf(typeof(Application), o);
 				Assert.AreEqual(new_version, e.NewVersion);
 			};
 
@@ -123,7 +123,7 @@ namespace lab4_v2
 		[Test()]
 		public void CheckOnNameChanged()
 		{
-			Program p = new Program ();
+			Application p = new Application ();
 
 			bool is_called = false;
 			string new_name = "new name";
@@ -131,7 +131,7 @@ namespace lab4_v2
 			p.NameChanged += (object o, NewNameEventArgs e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf(typeof(Program), o);
+				Assert.IsInstanceOf(typeof(Application), o);
 				Assert.AreEqual(new_name, e.NewName);
 			};
 
@@ -145,7 +145,7 @@ namespace lab4_v2
 		[Test()]
 		public void TestUpdate()
 		{
-			Program p = new Program();
+			Application p = new Application();
 
 			double start_freq = 1;
 			double start_min_gpu_mem = 1024;
