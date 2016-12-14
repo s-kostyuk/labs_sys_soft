@@ -6,9 +6,16 @@ namespace lab4_v2
 	[TestFixture ()]
 	public class TestUser
 	{
+		const string name = "common_name";
+		const string pass = "common_pass";
+		const string app_name = "test_app";
+
 		[Test ()]
 		public void TestUserInit ()
 		{
+			User u1 = new User (name, pass);
+
+			Assert.AreEqual (name, u1.Username);
 		}
 
 		[Test ()]
@@ -41,61 +48,64 @@ namespace lab4_v2
 		[Test()]
 		public void TestUsersAreNotEqual()
 		{
-			string name = "common_name";
-			string pass = "common_pass";
-
 			User u1 = new User (name, pass);
 			User u2 = new User (name, pass);
 
-			u2.AddProgram ("test_program");
+			u2.AddApplication (app_name);
 
 			Assert.AreNotEqual (u1, u2);
 		}
 
 		[Test()]
-		public void TestUsersWithSameProgramsEqual()
+		public void TestUsersWithSameAppsEqual()
 		{
-			string name = "common_name";
-			string pass = "common_pass";
-			string program = "test_program";
-
 			User u1 = new User (name, pass);
 			User u2 = new User (name, pass);
 
-			u1.AddProgram (program);
-			u2.AddProgram (program);
+			u1.AddApplication (app_name);
+			u2.AddApplication (app_name);
 
 			Assert.AreEqual (u1, u2);
 		}
 
 		[Test()]
-		public void TestUsersWithDifferentProgramsNotEqual()
+		public void TestUsersWithAppsNotEqual()
 		{
-			string name = "common_name";
-			string pass = "common_pass";
-
 			User u1 = new User (name, pass);
 			User u2 = new User (name, pass);
 
-			u1.AddProgram ("test_program1");
-			u2.AddProgram ("test_program2");
+			u1.AddApplication ("test_app1");
+			u2.AddApplication ("test_app2");
 
 			Assert.AreNotEqual (u1, u2);
 		}
 
 		[Test()]
-		public void TestUsersWithDifferentProgramsNotEqualOperator()
+		public void TestUsersWithAppsNotEqualOperator()
 		{
-			string name = "common_name";
-			string pass = "common_pass";
-
 			User u1 = new User (name, pass);
 			User u2 = new User (name, pass);
 
-			u1.AddProgram ("test_program1");
-			u2.AddProgram ("test_program2");
+			u1.AddApplication ("test_app1");
+			u2.AddApplication ("test_app2");
 
 			Assert.IsTrue (u1 != u2);
+		}
+
+		[Test()]
+		public void TestUserAuthSuccessful()
+		{
+			User u1 = new User (name, pass);
+
+			Assert.IsTrue(u1.IsAuthSuccessful(pass));
+		}
+
+		[Test()]
+		public void TestUserAuthUnsuccessful()
+		{
+			User u1 = new User (name, pass + " ");
+
+			Assert.IsFalse(u1.IsAuthSuccessful(pass));
 		}
 	}
 }

@@ -4,13 +4,21 @@ using System;
 namespace lab4_v2
 {
 	[TestFixture ()]
-	public class TestApplication
+	public class TestApp
 	{
 		/**********************************************************************************/
 
+		private Application GetAppInstance() {
+			return new Application ("Test name", "Unknown");
+		}
+
 		[Test ()]
-		public void TestProgramInit ()
+		public void TestAppInit ()
 		{
+			Application app = new Application ("Test name", "Unknown");
+
+			Assert.AreEqual ("Test name", app.Name);
+			Assert.AreEqual ("Unknown", app.Producer);
 		}
 
 		/**********************************************************************************/
@@ -18,12 +26,12 @@ namespace lab4_v2
 		[Test ()]
 		public void TestNameChange ()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			string target_name = "some name";
 
-			p.name = target_name;
-			Assert.AreEqual (target_name, p.name);
+			app.Name = target_name;
+			Assert.AreEqual (target_name, app.Name);
 		}
 
 		/**********************************************************************************/
@@ -31,10 +39,24 @@ namespace lab4_v2
 		[Test()]
 		public void TestEmptyNameChange()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			Assert.That ( () => {
-				p.name = "";
+				app.Name = "";
+			},
+				Throws.ArgumentException
+			);
+		}
+
+		/**********************************************************************************/
+
+		[Test()]
+		public void TestEmptyProducerNameChange()
+		{
+			Application app = GetAppInstance();
+
+			Assert.That ( () => {
+				app.Producer = "";
 			},
 				Throws.ArgumentException
 			);
@@ -45,10 +67,10 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeNegativeFreq()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			Assert.That ( () => {
-				p.min_cpu_freq = -1;
+				app.MinCpuFreq = -1;
 			},
 				Throws.TypeOf<ArgumentOutOfRangeException>()
 			);
@@ -59,10 +81,10 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeNegativeRam()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			Assert.That ( () => {
-				p.min_ram = -1;
+				app.MinRamCapacity = -1;
 			},
 				Throws.TypeOf<ArgumentOutOfRangeException>()
 			);
@@ -73,24 +95,10 @@ namespace lab4_v2
 		[Test()]
 		public void TestChangeGpuMem()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			Assert.That ( () => {
-				p.min_gpu_mem = -1;
-			},
-				Throws.TypeOf<ArgumentOutOfRangeException>()
-			);
-		}
-
-		/**********************************************************************************/
-
-		[Test()]
-		public void TestChangeNegativeVersion()
-		{
-			Application p = new Application ();
-
-			Assert.That ( () => {
-				p.version = -1;
+				app.MinGpuMem = -1;
 			},
 				Throws.TypeOf<ArgumentOutOfRangeException>()
 			);
@@ -101,19 +109,19 @@ namespace lab4_v2
 		[Test()]
 		public void CheckOnVersionChanged()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			bool is_called = false;
-			double new_version = 1.0;
+			Version new_version = new Version(2, 0);
 
-			p.VersionChanged += (o, e) => { 
+			app.VersionChanged += (o, e) => {
 				is_called = true;
 
 				Assert.IsInstanceOf(typeof(Application), o);
 				Assert.AreEqual(new_version, e.NewVersion);
 			};
 
-			p.version = 1.0;
+			app.AppVersion = new_version;
 
 			Assert.AreEqual (true, is_called);
 		}
@@ -123,19 +131,19 @@ namespace lab4_v2
 		[Test()]
 		public void CheckOnNameChanged()
 		{
-			Application p = new Application ();
+			Application app = GetAppInstance();
 
 			bool is_called = false;
 			string new_name = "new name";
 
-			p.NameChanged += (object o, NewNameEventArgs e) => {
+			app.NameChanged += (object o, NewNameEventArgs e) => {
 				is_called = true;
 
 				Assert.IsInstanceOf(typeof(Application), o);
 				Assert.AreEqual(new_name, e.NewName);
 			};
 
-			p.name = new_name;
+			app.Name = new_name;
 
 			Assert.AreEqual (true, is_called);
 		}
@@ -145,24 +153,24 @@ namespace lab4_v2
 		[Test()]
 		public void TestUpdate()
 		{
-			Application p = new Application();
+			Application app = GetAppInstance();
 
 			double start_freq = 1;
 			double start_min_gpu_mem = 1024;
 			double start_min_ram = 512;
-			double start_version = 1.0;
+			Version start_version = new Version(1, 0);
 
-			p.min_cpu_freq = start_freq;
-			p.min_gpu_mem = start_min_gpu_mem;
-			p.min_ram = start_min_ram;
-			p.version = start_version;
+			app.MinCpuFreq = start_freq;
+			app.MinGpuMem = start_min_gpu_mem;
+			app.MinRamCapacity = start_min_ram;
+			app.AppVersion = start_version;
 
-			p.Update ();
+			app.Update ();
 
-			Assert.IsTrue (p.min_cpu_freq > start_freq);
-			Assert.IsTrue (p.min_gpu_mem > start_min_gpu_mem);
-			Assert.IsTrue (p.min_ram > start_min_ram);
-			Assert.IsTrue (p.version > start_version);
+			Assert.IsTrue (app.MinCpuFreq > start_freq);
+			Assert.IsTrue (app.MinGpuMem > start_min_gpu_mem);
+			Assert.IsTrue (app.MinRamCapacity > start_min_ram);
+			Assert.IsTrue (app.AppVersion > start_version);
 		}
 
 		/**********************************************************************************/

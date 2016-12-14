@@ -5,19 +5,32 @@ namespace lab4_v2
 {
 	public class User
 	{
+		
+		/**********************************************************************************/
+
 		private string m_username;
 		private string m_password;
-		private HashSet<string> m_programs;
+		private HashSet<string> m_apps;
 
-		public HashSet<string> programs {
+		/**********************************************************************************/
+
+		public HashSet<string> Apps {
 			get {
-				return m_programs;
+				return m_apps;
 			}
 		}
 
+		public string Username {
+			get {
+				return m_username;
+			}
+		}
+
+		/**********************************************************************************/
+
 		public User ()
 		{
-			m_programs = new HashSet<string>();
+			m_apps = new HashSet<string>();
 		}
 
 		public User( string _username, string _password ) 
@@ -27,13 +40,22 @@ namespace lab4_v2
 			m_password = _password;
 		}
 
-		public void AddProgram( string _program_name ) 
+		/**********************************************************************************/
+
+		public void AddApplication( string _program_name )
 		{
-			m_programs.Add( _program_name );
+			m_apps.Add( _program_name );
 		}
 
+		public bool IsAuthSuccessful( string _pass ) {
+			return m_password == _pass;
+		}
+
+		/**********************************************************************************/
+
+
 		public static bool operator == (User _u1, User _u2) {
-			return _u1.programs.SetEquals(_u2.programs);
+			return _u1.Equals(_u2);
 		}
 
 		public static bool operator != (User _u1, User _u2) {
@@ -42,13 +64,28 @@ namespace lab4_v2
 
 		public override bool Equals (object obj)
 		{
-			return this == (User)obj;
+			User p = obj as User;
+
+			return Equals (p);
+		}
+
+		// NOTE: Comparing of users by their apps instead of names is quite strange.
+		// But thoose requiement is mentioned in lab's specification
+		public bool Equals (User _p) {
+			if ((object)_p == null) {
+				return false;
+			}
+
+			return this.Apps.SetEquals(_p.Apps);
 		}
 
 		public override int GetHashCode ()
 		{
 			return base.GetHashCode ();
 		}
+
+		/**********************************************************************************/
+
 	}
 }
 

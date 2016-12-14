@@ -42,10 +42,13 @@
     <Compile Include="Application.cs" />
     <Compile Include="AppManager.cs" />
     <Compile Include="Tests\TestApp.cs" />
+    <Compile Include="Support\PositiveValue.cs" />
+    <Compile Include="Support\NonEmptyString.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
     <Folder Include="Tests\" />
+    <Folder Include="Support\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

@@ -17,21 +17,11 @@ namespace lab4_v2
 
 	public class VersionUpdatedEventArgs : EventArgs
 	{
-		public VersionUpdatedEventArgs( double _new_version ) {
+		public VersionUpdatedEventArgs( Version _new_version ) {
 			NewVersion = _new_version;
 		}
 
-		public double NewVersion { get; private set; }
-	}
-
-	//--------------------------------------------------------------------------------------
-
-	public abstract class PositiveValue {
-		public static void CheckValue(double _value, string _value_name) {
-			if (_value <= 0) {
-				throw new ArgumentOutOfRangeException ("value", String.Format("{0} must be positive", _value_name));
-			}
-		}
+		public Version NewVersion { get; private set; }
 	}
 
 	//--------------------------------------------------------------------------------------
@@ -62,23 +52,24 @@ namespace lab4_v2
 		/**********************************************************************************/
 
 		private string m_name;
+		private string m_os_type;
+		private DateTime m_installation_date;
 		private double m_min_cpu_freq;
 		private double m_min_ram;
 		private double m_min_gpu_mem;
-		private double m_version;
 		private string m_producer;
+		private Version m_version;
+
 		private Random m_rand_generator;
 
 		/**********************************************************************************/
 
-		public string name {
+		public string Name {
 			get {
 				return m_name;
 			}
 			set {
-				if (value.Length == 0) {
-					throw new ArgumentException ("Name of program can't be empty");
-				}
+				NonEmptyString.CheckValue (value, "Name of program");
 
 				m_name = value;
 
@@ -90,11 +81,14 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public DateTime installation_date { get; set; }
+		public DateTime InstallationDate {
+			get { return m_installation_date; }
+			set { m_installation_date = value; }
+		}
 
 		/**********************************************************************************/
 
-		public double min_cpu_freq { 
+		public double MinCpuFreq {
 			get {
 				return m_min_cpu_freq;
 			}
@@ -107,7 +101,7 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public double min_ram {
+		public double MinRamCapacity {
 			get {
 				return m_min_ram;
 			}
@@ -120,7 +114,7 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public double min_gpu_mem {
+		public double MinGpuMem {
 			get {
 				return m_min_gpu_mem;
 			}
@@ -133,13 +127,11 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public double version {
+		public Version AppVersion {
 			get {
 				return m_version;
 			}
 			set {
-				PositiveValue.CheckValue (value, "Version number");
-
 				m_version = value;
 
 				VersionUpdatedEventArgs e_args = new VersionUpdatedEventArgs (m_version);
@@ -150,9 +142,43 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public Application ()
+		public string Producer {
+			get {
+				return m_producer;
+			}
+			set {
+				NonEmptyString.CheckValue (value, "Producer name");
+
+				m_producer = value;
+			}
+		}
+
+		/**********************************************************************************/
+
+		public Application (string _name, string _producer)
+			: this(_name, _producer, new Version())
+		{}
+
+		private Application (string _name, string _producer, Version _version)
 		{
 			m_rand_generator = new Random ();
+			Name = _name;
+			Producer = _producer;
+			AppVersion = new Version ();
+		}
+
+		public Application (string _name, string _os_type, DateTime _installed_date,
+			double _min_cpu_freq, double _min_ram_capacity, double _min_gpu_mem,
+			string _producer, Version _version
+		)
+			: this(_name, _producer, _version)
+		{
+			m_os_type = _os_type;
+			InstallationDate = _installed_date;
+			MinCpuFreq = _min_cpu_freq;
+			MinRamCapacity = _min_ram_capacity;
+			MinGpuMem = _min_gpu_mem;
+			AppVersion = _version;
 		}
 
 		/**********************************************************************************/
@@ -161,7 +187,16 @@ namespace lab4_v2
 			m_min_cpu_freq += m_rand_generator.NextDouble();
 			m_min_ram += m_rand_generator.NextDouble();
 			m_min_gpu_mem += m_rand_generator.NextDouble();
-			version += m_rand_generator.NextDouble ();
+
+			int new_build    = (AppVersion.Build    == -1) ? 0 : AppVersion.Build;
+			int new_revision = (AppVersion.Revision == -1) ? 0 : AppVersion.Revision;
+
+			AppVersion = new Version(
+				AppVersion.Major,
+				AppVersion.Minor,
+				new_build,
+				new_revision + m_rand_generator.Next() % 100000
+			);
 		}
 
 		/**********************************************************************************/
