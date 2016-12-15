@@ -44,6 +44,9 @@
     <Compile Include="Tests\TestApp.cs" />
     <Compile Include="Support\PositiveValue.cs" />
     <Compile Include="Support\NonEmptyString.cs" />
+    <Compile Include="Tests\TestAppManager.cs" />
+    <Compile Include="ComputerInfo.cs" />
+    <Compile Include="Tests\TestComputerInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />

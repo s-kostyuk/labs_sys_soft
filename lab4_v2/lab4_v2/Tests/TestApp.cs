@@ -15,10 +15,17 @@ namespace lab4_v2
 		[Test ()]
 		public void TestAppInit ()
 		{
-			Application app = new Application ("Test name", "Unknown");
+			string app_name = "Test name";
+			string app_producer = "Unknown";
 
-			Assert.AreEqual ("Test name", app.Name);
-			Assert.AreEqual ("Unknown", app.Producer);
+			Application app = new Application (app_name, app_producer);
+
+			Assert.AreEqual (app_name, app.Name);
+			Assert.AreEqual (app_producer, app.Producer);
+			Assert.AreEqual (
+				String.Format ("{0}.{1}", app_producer, app_name),
+				app.ID
+			);
 		}
 
 		/**********************************************************************************/
@@ -59,48 +66,6 @@ namespace lab4_v2
 				app.Producer = "";
 			},
 				Throws.ArgumentException
-			);
-		}
-
-		/**********************************************************************************/
-
-		[Test()]
-		public void TestChangeNegativeFreq()
-		{
-			Application app = GetAppInstance();
-
-			Assert.That ( () => {
-				app.MinCpuFreq = -1;
-			},
-				Throws.TypeOf<ArgumentOutOfRangeException>()
-			);
-		}
-
-		/**********************************************************************************/
-
-		[Test()]
-		public void TestChangeNegativeRam()
-		{
-			Application app = GetAppInstance();
-
-			Assert.That ( () => {
-				app.MinRamCapacity = -1;
-			},
-				Throws.TypeOf<ArgumentOutOfRangeException>()
-			);
-		}
-
-		/**********************************************************************************/
-
-		[Test()]
-		public void TestChangeGpuMem()
-		{
-			Application app = GetAppInstance();
-
-			Assert.That ( () => {
-				app.MinGpuMem = -1;
-			},
-				Throws.TypeOf<ArgumentOutOfRangeException>()
 			);
 		}
 
@@ -155,22 +120,57 @@ namespace lab4_v2
 		{
 			Application app = GetAppInstance();
 
-			double start_freq = 1;
-			double start_min_gpu_mem = 1024;
-			double start_min_ram = 512;
 			Version start_version = new Version(1, 0);
 
-			app.MinCpuFreq = start_freq;
-			app.MinGpuMem = start_min_gpu_mem;
-			app.MinRamCapacity = start_min_ram;
+			ComputerInfo start_req = new ComputerInfo ();
+			start_req.CpuFreq = 1;
+			start_req.GpuMem = 512;
+			start_req.RamCapacity = 1024;
+
+			app.MinRequirements = start_req;
 			app.AppVersion = start_version;
 
 			app.Update ();
 
-			Assert.IsTrue (app.MinCpuFreq > start_freq);
-			Assert.IsTrue (app.MinGpuMem > start_min_gpu_mem);
-			Assert.IsTrue (app.MinRamCapacity > start_min_ram);
+			Assert.IsTrue (app.MinRequirements.CpuFreq > start_req.CpuFreq);
+			Assert.IsTrue (app.MinRequirements.GpuMem > start_req.GpuMem);
+			Assert.IsTrue (app.MinRequirements.RamCapacity > start_req.RamCapacity);
 			Assert.IsTrue (app.AppVersion > start_version);
+		}
+
+		/**********************************************************************************/
+
+		[Test()]
+		public void TestIdIsStill()
+		{
+			string app_name = "Hello, world!";
+			string app_producer = "Producer";
+
+			Application a1 = new Application (app_name, app_producer);
+
+			string old_id = a1.ID;
+
+			a1.Name = "new name";
+			a1.Producer = "new producer";
+
+			Assert.AreEqual (old_id, a1.ID);
+		}
+
+		/**********************************************************************************/
+
+		[Test()]
+		public void TestAreEqual()
+		{
+			string app_name = "Hello, world!";
+			string app_producer = "Producer";
+
+			Application a1 = new Application (app_name, app_producer);
+			Application a2 = new Application (app_name, app_producer);
+
+			a1.Name = "new name";
+			a2.Producer = "new producer";
+
+			Assert.AreEqual (a1, a2);
 		}
 
 		/**********************************************************************************/

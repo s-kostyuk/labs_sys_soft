@@ -42,9 +42,9 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public void AddApplication( string _program_name )
+		public void AddApplication( string _program_id )
 		{
-			m_apps.Add( _program_name );
+			m_apps.Add( _program_id );
 		}
 
 		public bool IsAuthSuccessful( string _pass ) {
