@@ -9,8 +9,16 @@ namespace lab4_v2
 		/**********************************************************************************/
 
 		public AppManager ()
-		{
+			: this(new ComputerInfo())
+		{}
 
+		/**********************************************************************************/
+
+		public AppManager (ComputerInfo _info) {
+			m_apps = new Dictionary<string, Application>();
+			m_users = new Dictionary<string, User> ();
+			m_comp_info = _info;
+			m_ram_usage = new Dictionary<string, double> ();
 		}
 
 		/**********************************************************************************/
