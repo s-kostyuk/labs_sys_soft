@@ -47,8 +47,20 @@ namespace lab4_v2
 			m_apps.Add( _program_id );
 		}
 
+		/**********************************************************************************/
+
 		public bool IsAuthSuccessful( string _pass ) {
 			return m_password == _pass;
+		}
+
+		/**********************************************************************************/
+
+		public void ChangePassword( string _old_pass, string _new_pass ) {
+			if (IsAuthSuccessful (_old_pass)) {
+				m_password = _new_pass;
+			} else {
+				throw new UnauthorizedAccessException ("Invalid password");
+			}
 		}
 
 		/**********************************************************************************/

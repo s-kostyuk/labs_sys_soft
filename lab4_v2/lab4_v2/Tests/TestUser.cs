@@ -107,6 +107,30 @@ namespace lab4_v2
 
 			Assert.IsFalse(u1.IsAuthSuccessful(pass));
 		}
+
+		[Test()]
+		public void TestUserChangePassword()
+		{
+			User u1 = new User (name, pass);
+
+			string new_pass = pass + " ";
+
+			u1.ChangePassword (pass, new_pass);
+
+			Assert.IsTrue(u1.IsAuthSuccessful(new_pass));
+		}
+
+		[Test()]
+		public void TestUserChangePasswordWithWrongPass()
+		{
+			User u1 = new User (name, pass);
+
+			Assert.That ( () => {
+				u1.ChangePassword (pass + "foo", "bar");
+			},
+				Throws.TypeOf<UnauthorizedAccessException>()
+			);
+		}
 	}
 }
 
