@@ -115,6 +115,13 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
+		public Application GetApplication (string _app_id)
+		{
+			return m_apps [_app_id];
+		}
+
+		/**********************************************************************************/
+
 		public void RemoveApplication (string _app_id)
 		{
 			m_apps.Remove (_app_id);

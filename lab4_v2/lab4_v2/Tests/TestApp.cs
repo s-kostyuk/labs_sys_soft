@@ -8,7 +8,8 @@ namespace lab4_v2
 	{
 		/**********************************************************************************/
 
-		private Application GetAppInstance() {
+		private Application GetAppInstance ()
+		{
 			return new Application ("Test name", "Unknown");
 		}
 
@@ -33,7 +34,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestNameChange ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
 			string target_name = "some name";
 
@@ -43,12 +44,12 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void TestEmptyNameChange()
+		[Test ()]
+		public void TestEmptyNameChange ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
-			Assert.That ( () => {
+			Assert.That (() => {
 				app.Name = "";
 			},
 				Throws.ArgumentException
@@ -57,12 +58,12 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void TestEmptyProducerNameChange()
+		[Test ()]
+		public void TestEmptyProducerNameChange ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
-			Assert.That ( () => {
+			Assert.That (() => {
 				app.Producer = "";
 			},
 				Throws.ArgumentException
@@ -71,19 +72,19 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void CheckOnVersionChanged()
+		[Test ()]
+		public void CheckOnVersionChanged ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
 			bool is_called = false;
-			Version new_version = new Version(2, 0);
+			Version new_version = new Version (2, 0);
 
 			app.VersionChanged += (o, e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf(typeof(Application), o);
-				Assert.AreEqual(new_version, e.NewVersion);
+				Assert.IsInstanceOf (typeof(Application), o);
+				Assert.AreEqual (new_version, e.NewVersion);
 			};
 
 			app.AppVersion = new_version;
@@ -93,10 +94,10 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void CheckOnNameChanged()
+		[Test ()]
+		public void CheckOnNameChanged ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
 			bool is_called = false;
 			string new_name = "new name";
@@ -104,8 +105,8 @@ namespace lab4_v2
 			app.NameChanged += (object o, NewNameEventArgs e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf(typeof(Application), o);
-				Assert.AreEqual(new_name, e.NewName);
+				Assert.IsInstanceOf (typeof(Application), o);
+				Assert.AreEqual (new_name, e.NewName);
 			};
 
 			app.Name = new_name;
@@ -115,12 +116,12 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void TestUpdate()
+		[Test ()]
+		public void TestUpdate ()
 		{
-			Application app = GetAppInstance();
+			Application app = GetAppInstance ();
 
-			Version start_version = new Version(1, 0);
+			Version start_version = new Version (1, 0);
 
 			ComputerInfo start_req = new ComputerInfo ();
 			start_req.CpuFreq = 1;
@@ -140,8 +141,29 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void TestIdIsStill()
+		[Test ()]
+		public void TestOnVersionChangedInUpdate ()
+		{
+			Application app = GetAppInstance ();
+
+			bool is_called = false;
+
+			app.VersionChanged += (o, e) => {
+				is_called = true;
+
+				Assert.IsInstanceOf (typeof(Application), o);
+			};
+
+			app.Update ();
+
+			Assert.AreEqual (true, is_called);
+		}
+
+
+		/**********************************************************************************/
+
+		[Test ()]
+		public void TestIdIsStill ()
 		{
 			string app_name = "Hello, world!";
 			string app_producer = "Producer";
@@ -158,8 +180,8 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		[Test()]
-		public void TestAreEqual()
+		[Test ()]
+		public void TestAreEqual ()
 		{
 			string app_name = "Hello, world!";
 			string app_producer = "Producer";
