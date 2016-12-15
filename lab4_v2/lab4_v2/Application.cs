@@ -26,7 +26,7 @@ namespace lab4_v2
 
 	//--------------------------------------------------------------------------------------
 
-	public class Application
+	public class App
 	{
 		/**********************************************************************************/
 
@@ -51,11 +51,11 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public Application (string _name, string _producer)
+		public App (string _name, string _producer)
 			: this(_name, _producer, new Version())
 		{}
 
-		private Application (string _name, string _producer, Version _version)
+		private App (string _name, string _producer, Version _version)
 		{
 			m_rand_generator = new Random ();
 			Name = _name;
@@ -64,7 +64,7 @@ namespace lab4_v2
 			ID = String.Format("{0}.{1}", Producer, Name );
 		}
 
-		public Application (string _name, string _producer, Version _version,
+		public App (string _name, string _producer, Version _version,
 			DateTime _installed_date, ComputerInfo _min_req
 		)
 			: this(_name, _producer, _version)
@@ -175,22 +175,22 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public static bool operator == (Application _a1, Application _a2) {
+		public static bool operator == (App _a1, App _a2) {
 			return _a1.Equals(_a2);
 		}
 
-		public static bool operator != (Application _a1, Application _a2) {
+		public static bool operator != (App _a1, App _a2) {
 			return !( _a1 == _a2 );
 		}
 
 		public override bool Equals (object obj)
 		{
-			Application p = obj as Application;
+			App p = obj as App;
 
 			return Equals (p);
 		}
 
-		public bool Equals (Application _a) {
+		public bool Equals (App _a) {
 			if ((object)_a == null) {
 				return false;
 			}

@@ -15,7 +15,7 @@ namespace lab4_v2
 		/**********************************************************************************/
 
 		public AppManager (ComputerInfo _info) {
-			m_apps = new Dictionary<string, Application>();
+			m_apps = new Dictionary<string, App>();
 			m_users = new Dictionary<string, User> ();
 			m_comp_info = _info;
 			m_ram_usage = new Dictionary<string, double> ();
@@ -23,7 +23,7 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		private Dictionary<string, Application> m_apps;
+		private Dictionary<string, App> m_apps;
 		private Dictionary<string, User> m_users;
 		private ComputerInfo m_comp_info;
 		private Dictionary<string, double> m_ram_usage;
@@ -63,7 +63,7 @@ namespace lab4_v2
 		public void AllowUsage (string _app_id, string _username)
 		{
 			User u1 = m_users [_username];
-			Application app;
+			App app;
 
 			if (!m_apps.TryGetValue (_app_id, out app)) {
 				throw new ArgumentException ("Unable to find an app with such id");
@@ -88,7 +88,7 @@ namespace lab4_v2
 		public void DenyUsage (string _app_id, string _username)
 		{
 			User u1 = m_users [_username];
-			Application app = m_apps [_app_id];
+			App app = m_apps [_app_id];
 
 			u1.Apps.Remove (_app_id);
 
@@ -107,7 +107,7 @@ namespace lab4_v2
 
 		/**********************************************************************************/
 
-		public void AddApplication (Application _app)
+		public void AddApplication (App _app)
 		{
 			m_apps.Add (_app.ID, _app);
 		}
@@ -116,14 +116,14 @@ namespace lab4_v2
 
 		public void UpdateApplication (string _app_id)
 		{
-			Application app = m_apps [_app_id];
+			App app = m_apps [_app_id];
 
 			app.Update ();
 		}
 
 		/**********************************************************************************/
 
-		public Application GetApplication (string _app_id)
+		public App GetApplication (string _app_id)
 		{
 			return m_apps [_app_id];
 		}

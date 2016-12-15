@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{C7A51E19-6A85-4D0C-BE27-152519D7FDE7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>lab4_v2</RootNamespace>
     <AssemblyName>lab4_v2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -29,15 +29,38 @@
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Forms\MainForm.cs" />
-    <Compile Include="Forms\EditPCParams.cs" />
-    <Compile Include="Forms\EditProgram.cs" />
-    <Compile Include="Forms\EditUser.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Forms\EditPCParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditPCParams.Designer.cs">
+      <DependentUpon>EditPCParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditProgram.Designer.cs">
+      <DependentUpon>EditProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
-    <Compile Include="MainFile.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Tests\TestUser.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="AppManager.cs" />
@@ -49,17 +72,26 @@
     <Compile Include="Tests\TestComputerInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\" />
-    <Folder Include="Tests\" />
-    <Folder Include="Support\" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <Package>nunit</Package>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

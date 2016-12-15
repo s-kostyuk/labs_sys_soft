@@ -8,9 +8,9 @@ namespace lab4_v2
 	{
 		/**********************************************************************************/
 
-		private Application GetAppInstance ()
+		private App GetAppInstance ()
 		{
-			return new Application ("Test name", "Unknown");
+			return new App ("Test name", "Unknown");
 		}
 
 		[Test ()]
@@ -19,7 +19,7 @@ namespace lab4_v2
 			string app_name = "Test name";
 			string app_producer = "Unknown";
 
-			Application app = new Application (app_name, app_producer);
+			App app = new App (app_name, app_producer);
 
 			Assert.AreEqual (app_name, app.Name);
 			Assert.AreEqual (app_producer, app.Producer);
@@ -34,7 +34,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestNameChange ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			string target_name = "some name";
 
@@ -47,7 +47,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestEmptyNameChange ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			Assert.That (() => {
 				app.Name = "";
@@ -61,7 +61,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestEmptyProducerNameChange ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			Assert.That (() => {
 				app.Producer = "";
@@ -75,7 +75,7 @@ namespace lab4_v2
 		[Test ()]
 		public void CheckOnVersionChanged ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			bool is_called = false;
 			Version new_version = new Version (2, 0);
@@ -83,7 +83,7 @@ namespace lab4_v2
 			app.VersionChanged += (o, e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf (typeof(Application), o);
+				Assert.IsInstanceOf (typeof(App), o);
 				Assert.AreEqual (new_version, e.NewVersion);
 			};
 
@@ -97,7 +97,7 @@ namespace lab4_v2
 		[Test ()]
 		public void CheckOnNameChanged ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			bool is_called = false;
 			string new_name = "new name";
@@ -105,7 +105,7 @@ namespace lab4_v2
 			app.NameChanged += (object o, NewNameEventArgs e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf (typeof(Application), o);
+				Assert.IsInstanceOf (typeof(App), o);
 				Assert.AreEqual (new_name, e.NewName);
 			};
 
@@ -119,7 +119,7 @@ namespace lab4_v2
 		[Test ()]
 		public void TestUpdate ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			Version start_version = new Version (1, 0);
 
@@ -144,14 +144,14 @@ namespace lab4_v2
 		[Test ()]
 		public void TestOnVersionChangedInUpdate ()
 		{
-			Application app = GetAppInstance ();
+			App app = GetAppInstance ();
 
 			bool is_called = false;
 
 			app.VersionChanged += (o, e) => {
 				is_called = true;
 
-				Assert.IsInstanceOf (typeof(Application), o);
+				Assert.IsInstanceOf (typeof(App), o);
 			};
 
 			app.Update ();
@@ -168,7 +168,7 @@ namespace lab4_v2
 			string app_name = "Hello, world!";
 			string app_producer = "Producer";
 
-			Application a1 = new Application (app_name, app_producer);
+			App a1 = new App (app_name, app_producer);
 
 			string old_id = a1.ID;
 
@@ -186,8 +186,8 @@ namespace lab4_v2
 			string app_name = "Hello, world!";
 			string app_producer = "Producer";
 
-			Application a1 = new Application (app_name, app_producer);
-			Application a2 = new Application (app_name, app_producer);
+			App a1 = new App (app_name, app_producer);
+			App a2 = new App (app_name, app_producer);
 
 			a1.Name = "new name";
 			a2.Producer = "new producer";
