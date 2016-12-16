@@ -28,20 +28,24 @@ namespace lab4_v2
 
 	public class App
 	{
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public event EventHandler<VersionUpdatedEventArgs> VersionChanged;
+        #region Events
+
+        /**********************************************************************************/
+
+        public event EventHandler<VersionUpdatedEventArgs> VersionChanged;
 		public event EventHandler<NewNameEventArgs> NameChanged;
 
-		protected virtual void OnVersionChanged(VersionUpdatedEventArgs e) {
-			EventHandler<VersionUpdatedEventArgs> handler = VersionChanged;
+        /**********************************************************************************/
 
-			if (handler != null ) {  // If someone subscribed to event
-				handler (this, e);
-			}
-		}
+        protected virtual void OnVersionChanged(VersionUpdatedEventArgs e) {
+            VersionChanged?.Invoke(this, e);  // Executes the specified delegate. Alternative for bottom code
+        }
 
-		protected virtual void OnNameChanged(NewNameEventArgs e) {
+        /**********************************************************************************/
+
+        protected virtual void OnNameChanged(NewNameEventArgs e) {
 			EventHandler<NewNameEventArgs> handler = NameChanged;
 
 			if (handler != null ) {  // If someone subscribed to event
@@ -49,13 +53,23 @@ namespace lab4_v2
 			}
 		}
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public App (string _name, string _producer)
+        #endregion Events
+
+        /**********************************************************************************/
+
+        #region Constructors
+
+        /**********************************************************************************/
+
+        public App (string _name, string _producer)
 			: this(_name, _producer, new Version())
 		{}
 
-		private App (string _name, string _producer, Version _version)
+        /**********************************************************************************/
+
+        private App (string _name, string _producer, Version _version)
 		{
 			m_rand_generator = new Random ();
 			Name = _name;
@@ -64,7 +78,9 @@ namespace lab4_v2
 			ID = string.Format("{0}.{1}", Producer, Name );
 		}
 
-		public App (string _name, string _producer, Version _version,
+        /**********************************************************************************/
+
+        public App (string _name, string _producer, Version _version,
 			DateTime _installed_date, ComputerInfo _min_req
 		)
 			: this(_name, _producer, _version)
@@ -74,9 +90,11 @@ namespace lab4_v2
 			AppVersion = _version;
 		}
 
-		/**********************************************************************************/
+        #endregion Constructors
 
-		private string m_name;
+        /**********************************************************************************/
+
+        private string m_name;
 		private ComputerInfo m_min_requirements;
 		private DateTime m_installation_date;
 		private string m_producer;
@@ -85,9 +103,13 @@ namespace lab4_v2
 
 		private Random m_rand_generator;
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public string Name {
+        #region Properties
+
+        /**********************************************************************************/
+
+        public string Name {
 			get {
 				return m_name;
 			}
@@ -155,9 +177,11 @@ namespace lab4_v2
 			}
 		}
 
-		/**********************************************************************************/
+        #endregion Properties
 
-		public void Update() {
+        /**********************************************************************************/
+
+        public void Update() {
 			m_min_requirements.CpuFreq += m_rand_generator.NextDouble();
 			m_min_requirements.RamCapacity += m_rand_generator.NextDouble();
 			m_min_requirements.GpuMem += m_rand_generator.NextDouble();
@@ -173,24 +197,34 @@ namespace lab4_v2
 			);
 		}
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public static bool operator == (App _a1, App _a2) {
+        #region Comparison methods an operators
+
+        /**********************************************************************************/
+
+        public static bool operator == (App _a1, App _a2) {
 			return _a1.Equals(_a2);
 		}
 
-		public static bool operator != (App _a1, App _a2) {
+        /**********************************************************************************/
+
+        public static bool operator != (App _a1, App _a2) {
 			return !( _a1 == _a2 );
 		}
 
-		public override bool Equals (object obj)
+        /**********************************************************************************/
+
+        public override bool Equals (object obj)
 		{
 			App p = obj as App;
 
 			return Equals (p);
 		}
 
-		public bool Equals (App _a) {
+        /**********************************************************************************/
+
+        public bool Equals (App _a) {
 			if ((object)_a == null) {
 				return false;
 			}
@@ -198,7 +232,13 @@ namespace lab4_v2
 			return this.ID == _a.ID;
 		}
 
-		public override int GetHashCode ()
+        /**********************************************************************************/
+
+        #endregion Comparison methods an operators
+
+        /**********************************************************************************/
+
+        public override int GetHashCode ()
 		{
 			return this.ID.GetHashCode ();
 		}
