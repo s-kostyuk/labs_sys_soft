@@ -104,7 +104,7 @@ namespace lab4_v2
 
 		public void AddApplication (App _app)
 		{
-			m_apps.Add (_app.ID, _app);
+			m_apps.Add (_app.FullName, _app);
 		}
 
 		/**********************************************************************************/

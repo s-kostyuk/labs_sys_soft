@@ -73,6 +73,8 @@ namespace lab4_v2.Forms
                     "Unable to get value form text box(es). Please, remove any reduntant letters in your input", 
                     "Invalid format"
                 );
+
+                return;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -83,6 +85,8 @@ namespace lab4_v2.Forms
                         ),
                     "Argument out of range"
                 );
+
+                return;
             }
 
             m_app_manager.ComputerInfo = m_comp_info_copy;

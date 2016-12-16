@@ -24,8 +24,8 @@ namespace lab4_v2
 			Assert.AreEqual (app_name, app.Name);
 			Assert.AreEqual (app_producer, app.Producer);
 			Assert.AreEqual (
-                string.Format ("{0}.{1}", app_producer, app_name),
-				app.ID
+                string.Format ("{0} {1}", app_producer, app_name),
+				app.FullName
 			);
 		}
 
@@ -159,25 +159,6 @@ namespace lab4_v2
 			Assert.AreEqual (true, is_called);
 		}
 
-
-		/**********************************************************************************/
-
-		[Test ()]
-		public void TestIdIsStill ()
-		{
-			string app_name = "Hello, world!";
-			string app_producer = "Producer";
-
-			App a1 = new App (app_name, app_producer);
-
-			string old_id = a1.ID;
-
-			a1.Name = "new name";
-			a1.Producer = "new producer";
-
-			Assert.AreEqual (old_id, a1.ID);
-		}
-
 		/**********************************************************************************/
 
 		[Test ()]
@@ -188,9 +169,6 @@ namespace lab4_v2
 
 			App a1 = new App (app_name, app_producer);
 			App a2 = new App (app_name, app_producer);
-
-			a1.Name = "new name";
-			a2.Producer = "new producer";
 
 			Assert.AreEqual (a1, a2);
 		}

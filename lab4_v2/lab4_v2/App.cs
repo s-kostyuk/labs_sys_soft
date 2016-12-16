@@ -75,7 +75,6 @@ namespace lab4_v2
 			Name = _name;
 			Producer = _producer;
 			AppVersion = new Version ();
-			ID = string.Format("{0}.{1}", Producer, Name );
 		}
 
         /**********************************************************************************/
@@ -99,7 +98,6 @@ namespace lab4_v2
 		private DateTime m_installation_date;
 		private string m_producer;
 		private Version m_version;
-		private string m_id;
 
 		private Random m_rand_generator;
 
@@ -124,22 +122,25 @@ namespace lab4_v2
 			}
 		}
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public ComputerInfo MinRequirements {
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", Producer, Name); ;
+            }
+        }
+
+        /**********************************************************************************/
+
+        public ComputerInfo MinRequirements {
 			get {
 				return m_min_requirements;
 			}
 			set {
 				m_min_requirements = value;
 			}
-		}
-
-		/**********************************************************************************/
-
-		public string ID {
-			get { return m_id; }
-			private set { m_id = value; }
 		}
 
 		/**********************************************************************************/
@@ -229,7 +230,7 @@ namespace lab4_v2
 				return false;
 			}
 
-			return this.ID == _a.ID;
+			return this.Name == _a.Name;
 		}
 
         /**********************************************************************************/
@@ -240,7 +241,7 @@ namespace lab4_v2
 
         public override int GetHashCode ()
 		{
-			return this.ID.GetHashCode ();
+			return this.Name.GetHashCode ();
 		}
 
 		/**********************************************************************************/
