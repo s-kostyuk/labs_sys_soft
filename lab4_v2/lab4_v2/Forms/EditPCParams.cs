@@ -77,7 +77,7 @@ namespace lab4_v2.Forms
             catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show(
-                    String.Format(
+                    string.Format(
                         "Unable to set specified value. {0}",
                         ex.Message
                         ),

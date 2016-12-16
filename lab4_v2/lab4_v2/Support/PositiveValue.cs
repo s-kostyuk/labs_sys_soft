@@ -8,7 +8,7 @@ namespace lab4_v2
 			if (_value <= 0.0) {
 				throw new ArgumentOutOfRangeException (
 					_value_name,
-					String.Format("{0} value must be positive", _value_name)
+                    string.Format("{0} value must be positive", _value_name)
 				);
 			}
 		}
@@ -17,7 +17,7 @@ namespace lab4_v2
 			if (_value <= 0) {
 				throw new ArgumentOutOfRangeException (
 					_value_name,
-					String.Format("{0} value must be positive", _value_name)
+                    string.Format("{0} value must be positive", _value_name)
 				);
 			}
 		}

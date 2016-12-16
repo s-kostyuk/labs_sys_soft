@@ -24,7 +24,7 @@ namespace lab4_v2
 			Assert.AreEqual (app_name, app.Name);
 			Assert.AreEqual (app_producer, app.Producer);
 			Assert.AreEqual (
-				String.Format ("{0}.{1}", app_producer, app_name),
+                string.Format ("{0}.{1}", app_producer, app_name),
 				app.ID
 			);
 		}

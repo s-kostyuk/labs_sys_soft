@@ -7,7 +7,7 @@ namespace lab4_v2
 			if (_value.Length == 0) {
 				throw new ArgumentException (
 					_value_name,
-					String.Format("{0} value can't be empty", _value_name)
+                    string.Format("{0} value can't be empty", _value_name)
 				);
 			}
 		}

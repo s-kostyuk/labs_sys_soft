@@ -61,7 +61,7 @@ namespace lab4_v2
 			Name = _name;
 			Producer = _producer;
 			AppVersion = new Version ();
-			ID = String.Format("{0}.{1}", Producer, Name );
+			ID = string.Format("{0}.{1}", Producer, Name );
 		}
 
 		public App (string _name, string _producer, Version _version,

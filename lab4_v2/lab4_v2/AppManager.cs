@@ -32,31 +32,26 @@ namespace lab4_v2
 
 		public ComputerInfo ComputerInfo {
 			get { return m_comp_info; }
-			set { m_comp_info = value; }
+			set
+            {
+                m_comp_info = value;
+                OnSomeChange(ComputerInfoUpdated);
+            }
 		}
 
 		/**********************************************************************************/
 
 		public event EventHandler AllAppsRemoved;
 		public event EventHandler AllUsersRemoved;
-        
-		protected virtual void OnAllAppsRemoved ()
-		{
-			EventHandler handler = AllAppsRemoved;
+        public event EventHandler ComputerInfoUpdated;
 
-			if (handler != null) {
-				handler (this, EventArgs.Empty);
-			}
-		}
-
-		protected virtual void OnAllUsersRemoved ()
-		{
-			EventHandler handler = AllUsersRemoved;
-
-			if (handler != null) {
-				handler (this, EventArgs.Empty);
-			}
-		}
+        protected virtual void OnSomeChange(EventHandler _handler)
+        {
+            if (_handler != null)
+            {
+                _handler(this, EventArgs.Empty);
+            }
+        }
 
         /**********************************************************************************/
 
@@ -135,7 +130,7 @@ namespace lab4_v2
 			m_apps.Remove (_app_id);
 
 			if (m_apps.Count == 0) {
-				OnAllAppsRemoved ();
+				OnSomeChange (AllAppsRemoved);
 			}
 		}
 
@@ -162,8 +157,8 @@ namespace lab4_v2
 			m_ram_usage.Remove (_username);
 
 			if (m_users.Count == 0) {
-				OnAllUsersRemoved ();
-			}
+                OnSomeChange(AllUsersRemoved);
+            }
 		}
 
 		/**********************************************************************************/
@@ -193,24 +188,16 @@ namespace lab4_v2
 			m_comp_info.CpuFreq = _cpu_freq;
 			m_comp_info.RamCapacity = _ram_capacity;
 			m_comp_info.GpuMem = _gpu_mem;
+
+            OnSomeChange(ComputerInfoUpdated);
         }
-
-		/**********************************************************************************/
-
-		public void ChangeComputerInfo (
-			double _cpu_freq, double _ram_capacity, double _gpu_mem, string _os_type
-		)
-		{
-			ChangeOSType (_os_type);
-			ChangeComputerInfo (_cpu_freq, _ram_capacity, _gpu_mem);
-		}
 
 		/**********************************************************************************/
 
 		public void RemoveAllUsers ()
 		{
 			m_users.Clear ();
-			OnAllUsersRemoved ();
+			OnSomeChange (AllUsersRemoved);
 		}
 
 		/**********************************************************************************/
@@ -218,7 +205,7 @@ namespace lab4_v2
 		public void RemoveAllApps ()
 		{
 			m_apps.Clear ();
-			OnAllAppsRemoved ();
+			OnSomeChange (AllAppsRemoved);
 		}
 
 		/**********************************************************************************/
