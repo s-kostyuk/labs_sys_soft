@@ -62,7 +62,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Tests\TestUser.cs" />
-    <Compile Include="Application.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="AppManager.cs" />
     <Compile Include="Tests\TestApp.cs" />
     <Compile Include="Support\PositiveValue.cs" />
@@ -90,6 +90,9 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\EditPCParams.resx">
+      <DependentUpon>EditPCParams.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

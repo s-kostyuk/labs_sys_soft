@@ -39,7 +39,7 @@ namespace lab4_v2
 
 		public event EventHandler AllAppsRemoved;
 		public event EventHandler AllUsersRemoved;
-
+        
 		protected virtual void OnAllAppsRemoved ()
 		{
 			EventHandler handler = AllAppsRemoved;
@@ -58,9 +58,9 @@ namespace lab4_v2
 			}
 		}
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public void AllowUsage (string _app_id, string _username)
+        public void AllowUsage (string _app_id, string _username)
 		{
 			User u1 = m_users [_username];
 			App app;
@@ -193,7 +193,7 @@ namespace lab4_v2
 			m_comp_info.CpuFreq = _cpu_freq;
 			m_comp_info.RamCapacity = _ram_capacity;
 			m_comp_info.GpuMem = _gpu_mem;
-		}
+        }
 
 		/**********************************************************************************/
 

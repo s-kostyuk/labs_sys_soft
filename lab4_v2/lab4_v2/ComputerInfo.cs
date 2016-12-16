@@ -2,7 +2,7 @@
 
 namespace lab4_v2
 {
-	public struct ComputerInfo
+	public class ComputerInfo
 	{
 		
 		/**********************************************************************************/

@@ -78,13 +78,13 @@
             this.statusStripSysInfo.Size = new System.Drawing.Size(631, 22);
             this.statusStripSysInfo.TabIndex = 1;
             this.statusStripSysInfo.Text = "statusStripSysInfo";
+            this.statusStripSysInfo.DoubleClick += new System.EventHandler(this.statusStripSysInfo_DoubleClick);
             // 
             // sysInfoLabel
             // 
             this.sysInfoLabel.Name = "sysInfoLabel";
             this.sysInfoLabel.Size = new System.Drawing.Size(72, 17);
             this.sysInfoLabel.Text = "sysInfoLabel";
-            this.sysInfoLabel.Click += new System.EventHandler(this.sysInfo_Click);
             // 
             // MainForm
             // 
