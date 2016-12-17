@@ -6,12 +6,12 @@ namespace lab4_v2
 
 	public class NewNameEventArgs : EventArgs
 	{
-		public NewNameEventArgs( string _new_name ) {
-			NewName = _new_name;
+		public NewNameEventArgs( string _old_name ) {
+            OldName = _old_name;
 		}
 
-		public string NewName { get; private set; }
-	}
+        public string OldName { get; private set; }
+    }
 
 	//--------------------------------------------------------------------------------------
 
@@ -36,6 +36,7 @@ namespace lab4_v2
 
         public event EventHandler<VersionUpdatedEventArgs> VersionChanged;
 		public event EventHandler<NewNameEventArgs> NameChanged;
+        public event EventHandler<NewNameEventArgs> FullNameChanged;
 
         /**********************************************************************************/
 
@@ -51,7 +52,24 @@ namespace lab4_v2
 			if (handler != null ) {  // If someone subscribed to event
 				handler (this, e);
 			}
-		}
+
+            string old_full_name = string.Format("{0} {1}", Producer, e.OldName);
+
+            OnFullNameChanged(new NewNameEventArgs(old_full_name));
+
+        }
+
+        /**********************************************************************************/
+
+        protected virtual void OnFullNameChanged(NewNameEventArgs e)
+        {
+            EventHandler<NewNameEventArgs> handler = FullNameChanged;
+
+            if (handler != null)
+            {  // If someone subscribed to event
+                handler(this, e);
+            }
+        }
 
         /**********************************************************************************/
 
@@ -114,9 +132,11 @@ namespace lab4_v2
 			set {
 				NonEmptyString.CheckValue (value, "Name of program");
 
+                string old_name = m_name;
+
 				m_name = value;
 
-				NewNameEventArgs e_args = new NewNameEventArgs (m_name);
+				NewNameEventArgs e_args = new NewNameEventArgs (old_name);
 
 				OnNameChanged (e_args);
 			}
@@ -174,7 +194,11 @@ namespace lab4_v2
 			set {
 				NonEmptyString.CheckValue (value, "Producer name");
 
+                string old_full_name = FullName;
+
 				m_producer = value;
+
+                OnFullNameChanged(new NewNameEventArgs(old_full_name));
 			}
 		}
 

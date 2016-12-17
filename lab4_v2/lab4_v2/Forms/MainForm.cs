@@ -23,6 +23,7 @@ namespace lab4_v2.Forms
             m_app_manager.ComputerInfoUpdated += UpdateSysInfoLabel;
 
             UpdateSysInfoLabel();
+            listBoxUsers.DataSource = m_app_manager;
         }
 
         /**********************************************************************************/
@@ -31,6 +32,10 @@ namespace lab4_v2.Forms
         /// Reference to AppManager instance
         /// </summary>
         private AppManager m_app_manager;
+
+        /**********************************************************************************/
+
+        #region System info
 
         /**********************************************************************************/
 
@@ -58,6 +63,83 @@ namespace lab4_v2.Forms
         {
             new Forms.EditPCParams(m_app_manager).Show();
         }
+
+        /**********************************************************************************/
+
+        #endregion System info
+
+        /**********************************************************************************/
+
+        #region Buttons apps
+
+        /**********************************************************************************/
+
+        private void buttonAddApp_Click(object sender, EventArgs e)
+        {
+            Form edit_app_form = new EditApp(m_app_manager);
+            edit_app_form.Show();
+        }
+
+        /**********************************************************************************/
+
+        private void buttonEditApp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        private void buttonRemoveApp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        private void buttonRemoveAppApps_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        #endregion Buttons apps
+
+        /**********************************************************************************/
+
+        #region Users
+
+        /**********************************************************************************/
+
+        private void buttonAddUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        private void buttonEditUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        private void buttonRmUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        private void buttonRmAllUsers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /**********************************************************************************/
+
+        #endregion Users
 
         /**********************************************************************************/
 

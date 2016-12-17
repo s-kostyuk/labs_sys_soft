@@ -35,16 +35,16 @@
             this.buttonEditApp = new System.Windows.Forms.Button();
             this.buttonRemoveApp = new System.Windows.Forms.Button();
             this.buttonRemoveAppApps = new System.Windows.Forms.Button();
+            this.listBoxApps = new System.Windows.Forms.ListBox();
             this.tabPageUsers = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelUsers = new System.Windows.Forms.TableLayoutPanel();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonEditUser = new System.Windows.Forms.Button();
             this.buttonRmUser = new System.Windows.Forms.Button();
             this.buttonRmAllUsers = new System.Windows.Forms.Button();
+            this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.statusStripSysInfo = new System.Windows.Forms.StatusStrip();
             this.sysInfoLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.listBoxUsers = new System.Windows.Forms.ListBox();
-            this.listBoxApps = new System.Windows.Forms.ListBox();
             this.tabChooser.SuspendLayout();
             this.tabPageApps.SuspendLayout();
             this.tableLayoutPanelApps.SuspendLayout();
@@ -108,6 +108,7 @@
             this.buttonAddApp.TabIndex = 1;
             this.buttonAddApp.Text = "Add application";
             this.buttonAddApp.UseVisualStyleBackColor = true;
+            this.buttonAddApp.Click += new System.EventHandler(this.buttonAddApp_Click);
             // 
             // buttonEditApp
             // 
@@ -118,6 +119,7 @@
             this.buttonEditApp.TabIndex = 2;
             this.buttonEditApp.Text = "Edit application";
             this.buttonEditApp.UseVisualStyleBackColor = true;
+            this.buttonEditApp.Click += new System.EventHandler(this.buttonEditApp_Click);
             // 
             // buttonRemoveApp
             // 
@@ -128,6 +130,7 @@
             this.buttonRemoveApp.TabIndex = 3;
             this.buttonRemoveApp.Text = "Remove application";
             this.buttonRemoveApp.UseVisualStyleBackColor = true;
+            this.buttonRemoveApp.Click += new System.EventHandler(this.buttonRemoveApp_Click);
             // 
             // buttonRemoveAppApps
             // 
@@ -138,6 +141,17 @@
             this.buttonRemoveAppApps.TabIndex = 4;
             this.buttonRemoveAppApps.Text = "Remove all apps";
             this.buttonRemoveAppApps.UseVisualStyleBackColor = true;
+            this.buttonRemoveAppApps.Click += new System.EventHandler(this.buttonRemoveAppApps_Click);
+            // 
+            // listBoxApps
+            // 
+            this.listBoxApps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxApps.FormattingEnabled = true;
+            this.listBoxApps.Location = new System.Drawing.Point(121, 3);
+            this.listBoxApps.Name = "listBoxApps";
+            this.tableLayoutPanelApps.SetRowSpan(this.listBoxApps, 5);
+            this.listBoxApps.Size = new System.Drawing.Size(493, 273);
+            this.listBoxApps.TabIndex = 5;
             // 
             // tabPageUsers
             // 
@@ -181,6 +195,7 @@
             this.buttonAddUser.TabIndex = 0;
             this.buttonAddUser.Text = "Add user";
             this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
             // buttonEditUser
             // 
@@ -191,6 +206,7 @@
             this.buttonEditUser.TabIndex = 1;
             this.buttonEditUser.Text = "Edit user";
             this.buttonEditUser.UseVisualStyleBackColor = true;
+            this.buttonEditUser.Click += new System.EventHandler(this.buttonEditUser_Click);
             // 
             // buttonRmUser
             // 
@@ -201,6 +217,7 @@
             this.buttonRmUser.TabIndex = 2;
             this.buttonRmUser.Text = "Remove user";
             this.buttonRmUser.UseVisualStyleBackColor = true;
+            this.buttonRmUser.Click += new System.EventHandler(this.buttonRmUser_Click);
             // 
             // buttonRmAllUsers
             // 
@@ -211,6 +228,17 @@
             this.buttonRmAllUsers.TabIndex = 3;
             this.buttonRmAllUsers.Text = "Remove all users";
             this.buttonRmAllUsers.UseVisualStyleBackColor = true;
+            this.buttonRmAllUsers.Click += new System.EventHandler(this.buttonRmAllUsers_Click);
+            // 
+            // listBoxUsers
+            // 
+            this.listBoxUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxUsers.FormattingEnabled = true;
+            this.listBoxUsers.Location = new System.Drawing.Point(121, 3);
+            this.listBoxUsers.Name = "listBoxUsers";
+            this.tableLayoutPanelUsers.SetRowSpan(this.listBoxUsers, 5);
+            this.listBoxUsers.Size = new System.Drawing.Size(493, 273);
+            this.listBoxUsers.TabIndex = 4;
             // 
             // statusStripSysInfo
             // 
@@ -228,26 +256,6 @@
             this.sysInfoLabel.Name = "sysInfoLabel";
             this.sysInfoLabel.Size = new System.Drawing.Size(72, 17);
             this.sysInfoLabel.Text = "sysInfoLabel";
-            // 
-            // listBoxUsers
-            // 
-            this.listBoxUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxUsers.FormattingEnabled = true;
-            this.listBoxUsers.Location = new System.Drawing.Point(121, 3);
-            this.listBoxUsers.Name = "listBoxUsers";
-            this.tableLayoutPanelUsers.SetRowSpan(this.listBoxUsers, 5);
-            this.listBoxUsers.Size = new System.Drawing.Size(493, 273);
-            this.listBoxUsers.TabIndex = 4;
-            // 
-            // listBoxApps
-            // 
-            this.listBoxApps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxApps.FormattingEnabled = true;
-            this.listBoxApps.Location = new System.Drawing.Point(121, 3);
-            this.listBoxApps.Name = "listBoxApps";
-            this.tableLayoutPanelApps.SetRowSpan(this.listBoxApps, 5);
-            this.listBoxApps.Size = new System.Drawing.Size(493, 273);
-            this.listBoxApps.TabIndex = 5;
             // 
             // MainForm
             // 

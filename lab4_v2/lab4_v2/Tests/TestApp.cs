@@ -100,23 +100,45 @@ namespace lab4_v2
 			App app = GetAppInstance ();
 
 			bool is_called = false;
-			string new_name = "new name";
+			string old_name = app.Name;
 
 			app.NameChanged += (object o, NewNameEventArgs e) => {
 				is_called = true;
 
 				Assert.IsInstanceOf (typeof(App), o);
-				Assert.AreEqual (new_name, e.NewName);
+				Assert.AreEqual (old_name, e.OldName);
 			};
 
-			app.Name = new_name;
+			app.Name = "new name";
 
 			Assert.AreEqual (true, is_called);
 		}
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		[Test ()]
+        [Test()]
+        public void CheckOnFullNameChanged()
+        {
+            App app = GetAppInstance();
+
+            bool is_called = false;
+            string old_full_name = app.FullName;
+
+            app.FullNameChanged += (object o, NewNameEventArgs e) => {
+                is_called = true;
+
+                Assert.IsInstanceOf(typeof(App), o);
+                Assert.AreEqual(old_full_name, e.OldName);
+            };
+
+            app.Name = "new name";
+
+            Assert.AreEqual(true, is_called);
+        }
+
+        /**********************************************************************************/
+
+        [Test ()]
 		public void TestUpdate ()
 		{
 			App app = GetAppInstance ();
