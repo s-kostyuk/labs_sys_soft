@@ -127,10 +127,12 @@ namespace lab4_v2
 			target_ram_usage += app.MinRequirements.RamCapacity;
 
 			if (target_ram_usage > m_comp_info.RamCapacity) {
-				throw new ArgumentException ("Not enough RAM left");
-			}
+                throw new ArgumentException ("Not enough RAM left");
+            }
 
-			u1.AddApplication (_app_id);
+            m_ram_usage[_username] = target_ram_usage;
+
+            u1.AddApplication (_app_id);
 		}
 
 		/**********************************************************************************/
