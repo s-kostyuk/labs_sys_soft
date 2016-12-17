@@ -15,22 +15,32 @@ namespace lab4_v2
 		/**********************************************************************************/
 
 		public AppManager (ComputerInfo _info) {
-			m_apps = new Dictionary<string, App>();
-			m_users = new Dictionary<string, User> ();
+			m_apps = new SortedDictionary<string, App>();
+			m_users = new SortedDictionary<string, User> ();
 			m_comp_info = _info;
 			m_ram_usage = new Dictionary<string, double> ();
 		}
 
 		/**********************************************************************************/
 
-		private Dictionary<string, App> m_apps;
-		private Dictionary<string, User> m_users;
+		private SortedDictionary<string, App> m_apps;
+		private SortedDictionary<string, User> m_users;
 		private ComputerInfo m_comp_info;
 		private Dictionary<string, double> m_ram_usage;
 
-		/**********************************************************************************/
+        /**********************************************************************************/
 
-		public ComputerInfo ComputerInfo {
+        public SortedDictionary<string, App> Apps
+        {
+            get
+            {
+                return m_apps;
+            }
+        }
+
+        /**********************************************************************************/
+
+        public ComputerInfo ComputerInfo {
 			get { return m_comp_info; }
 			set
             {

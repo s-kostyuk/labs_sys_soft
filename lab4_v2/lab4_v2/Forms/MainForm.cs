@@ -23,7 +23,13 @@ namespace lab4_v2.Forms
             m_app_manager.ComputerInfoUpdated += UpdateSysInfoLabel;
 
             UpdateSysInfoLabel();
-            listBoxUsers.DataSource = m_app_manager;
+
+            m_app_manager.AddApplication(new App("app_name", "producer"));
+            m_app_manager.AddApplication(new App("app_name2", "producer2"));
+
+            listBoxApps.DataSource = new BindingSource(m_app_manager.Apps, null);
+
+            listBoxApps.DisplayMember = "Key";
         }
 
         /**********************************************************************************/
@@ -70,7 +76,7 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
-        #region Buttons apps
+        #region Apps
 
         /**********************************************************************************/
 
@@ -103,7 +109,7 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
-        #endregion Buttons apps
+        #endregion Apps
 
         /**********************************************************************************/
 
