@@ -141,7 +141,7 @@
             this.buttonRemoveAppApps.TabIndex = 4;
             this.buttonRemoveAppApps.Text = "Remove all apps";
             this.buttonRemoveAppApps.UseVisualStyleBackColor = true;
-            this.buttonRemoveAppApps.Click += new System.EventHandler(this.buttonRemoveAppApps_Click);
+            this.buttonRemoveAppApps.Click += new System.EventHandler(this.buttonRemoveAllApps_Click);
             // 
             // listBoxApps
             // 

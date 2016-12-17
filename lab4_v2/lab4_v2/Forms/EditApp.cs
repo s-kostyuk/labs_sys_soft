@@ -18,6 +18,8 @@ namespace lab4_v2.Forms
         public EditApp(AppManager _am)
         {
             InitializeComponent();
+
+            m_app_manager = _am;
         }
 
         /**********************************************************************************/

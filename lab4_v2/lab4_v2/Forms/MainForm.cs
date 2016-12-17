@@ -104,7 +104,7 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
-        private void buttonRemoveAppApps_Click(object sender, EventArgs e)
+        private void buttonRemoveAllApps_Click(object sender, EventArgs e)
         {
 
         }
@@ -121,14 +121,20 @@ namespace lab4_v2.Forms
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-
+            EditUser edit_user_form = new EditUser(m_app_manager);
+            edit_user_form.SetUsernameReadOnly(false);
+            edit_user_form.SetOldPassReadOnly(true);
+            edit_user_form.Show();
         }
 
         /**********************************************************************************/
 
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-
+            EditUser edit_user_form = new EditUser(m_app_manager);
+            edit_user_form.SetUsernameReadOnly(true);
+            edit_user_form.SetOldPassReadOnly(false);
+            edit_user_form.Show();
         }
 
         /**********************************************************************************/
