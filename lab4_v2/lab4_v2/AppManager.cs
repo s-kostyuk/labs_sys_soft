@@ -174,7 +174,17 @@ namespace lab4_v2
 		{
 			App app = m_apps [_app_id];
 
+            ComputerInfo old_req = new ComputerInfo(app.MinRequirements);
+            Version old_ver = app.AppVersion;
+
 			app.Update ();
+
+            if (app.MinRequirements > m_comp_info)
+            {
+                app.MinRequirements = old_req;
+                app.AppVersion = old_ver;
+                throw new ArgumentException("Unable to update application: Min requirements are too high", "_app");
+            }
 		}
 
 		/**********************************************************************************/

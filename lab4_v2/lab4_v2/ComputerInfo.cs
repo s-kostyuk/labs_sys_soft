@@ -4,10 +4,24 @@ namespace lab4_v2
 {
 	public class ComputerInfo
 	{
-		
-		/**********************************************************************************/
 
-		private string m_os_type;
+        /**********************************************************************************/
+
+        public ComputerInfo() {}
+
+        /**********************************************************************************/
+
+        public ComputerInfo(ComputerInfo _ci)
+        {
+            m_cpu_freq = _ci.m_cpu_freq;
+            m_gpu_mem = _ci.m_gpu_mem;
+            m_os_type = _ci.m_os_type;
+            m_ram = _ci.m_ram;
+        }
+
+        /**********************************************************************************/
+
+        private string m_os_type;
 		private double m_cpu_freq;
 		private double m_ram;
 		private double m_gpu_mem;

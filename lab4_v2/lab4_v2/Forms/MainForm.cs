@@ -189,7 +189,14 @@ namespace lab4_v2.Forms
         {
             string on_update = listBoxApps.SelectedItem as string;
 
-            m_app_manager.UpdateApplication(on_update);
+            try
+            {
+                m_app_manager.UpdateApplication(on_update);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Update error");
+            }
         }
 
         /**********************************************************************************/
