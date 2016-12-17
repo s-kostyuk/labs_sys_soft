@@ -159,6 +159,10 @@ namespace lab4_v2
 
 		public void AddApplication (App _app)
 		{
+            if (_app.MinRequirements > m_comp_info)
+            {
+                throw new ArgumentException("Unable to add application: Min requirements are too high", "_app");
+            }
 			m_apps.Add (_app.FullName, _app);
 
             OnNewAppAdded(_app.FullName);
