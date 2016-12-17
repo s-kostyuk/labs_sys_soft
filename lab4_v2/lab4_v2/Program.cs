@@ -1,4 +1,8 @@
-﻿using System;using System.Collections.Generic;using System.Linq;using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+
 
 namespace lab4_v2
 {
@@ -6,7 +10,8 @@ namespace lab4_v2
     {
         /// <summary>
         /// The main entry point for the application.
-        /// </summary>
+        /// </summary>
+
         [STAThread]
         static void Main()
         {
@@ -18,9 +23,12 @@ namespace lab4_v2
 
             AppManager am = new AppManager(ci);
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Form main_form = new Forms.MainForm(am);
+            Application.EnableVisualStyles();
+
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            Form main_form = new Forms.MainForm(am);
+
             Application.Run(main_form);
         }
     }

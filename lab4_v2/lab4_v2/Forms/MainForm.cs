@@ -139,7 +139,8 @@ namespace lab4_v2.Forms
 
         private void buttonEditApp_Click(object sender, EventArgs e)
         {
-
+            Form edit_app_form = new EditApp(m_app_manager);
+            edit_app_form.Show();
         }
 
         /**********************************************************************************/
@@ -162,6 +163,15 @@ namespace lab4_v2.Forms
             m_app_manager.RemoveAllApps();
 
             listBoxApps.Items.Clear();
+        }
+
+        /**********************************************************************************/
+
+        private void buttonUpdateApp_Click(object sender, EventArgs e)
+        {
+            string on_update = listBoxApps.SelectedItem as string;
+
+            m_app_manager.UpdateApplication(on_update);
         }
 
         /**********************************************************************************/

@@ -163,8 +163,11 @@ namespace lab4_v2
 
 		public App GetApplication (string _app_id)
 		{
-			return m_apps [_app_id];
-		}
+            App returned;
+			m_apps.TryGetValue(_app_id, out returned);
+
+            return returned;
+        }
 
 		/**********************************************************************************/
 

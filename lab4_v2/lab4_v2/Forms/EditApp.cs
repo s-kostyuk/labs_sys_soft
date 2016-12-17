@@ -15,17 +15,27 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
-        public EditApp(AppManager _am)
+        public EditApp(AppManager _am, string _app_full_name = null)
         {
             InitializeComponent();
 
             m_app_manager = _am;
+            m_app_full_name = _app_full_name;
+
+            
         }
 
         /**********************************************************************************/
 
         private AppManager m_app_manager;
+        private string m_app_full_name;
+        private App m_temp_app;
 
         /**********************************************************************************/
+
+
+
+        /**********************************************************************************/
+
     }
 }

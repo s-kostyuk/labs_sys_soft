@@ -45,6 +45,7 @@
             this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.statusStripSysInfo = new System.Windows.Forms.StatusStrip();
             this.sysInfoLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonUpdateApp = new System.Windows.Forms.Button();
             this.tabChooser.SuspendLayout();
             this.tabPageApps.SuspendLayout();
             this.tableLayoutPanelApps.SuspendLayout();
@@ -82,6 +83,7 @@
             this.tableLayoutPanelApps.ColumnCount = 2;
             this.tableLayoutPanelApps.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableLayoutPanelApps.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelApps.Controls.Add(this.buttonUpdateApp, 0, 4);
             this.tableLayoutPanelApps.Controls.Add(this.buttonAddApp, 0, 0);
             this.tableLayoutPanelApps.Controls.Add(this.buttonEditApp, 0, 1);
             this.tableLayoutPanelApps.Controls.Add(this.buttonRemoveApp, 0, 2);
@@ -90,7 +92,8 @@
             this.tableLayoutPanelApps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelApps.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelApps.Name = "tableLayoutPanelApps";
-            this.tableLayoutPanelApps.RowCount = 5;
+            this.tableLayoutPanelApps.RowCount = 6;
+            this.tableLayoutPanelApps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelApps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelApps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelApps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -149,7 +152,7 @@
             this.listBoxApps.FormattingEnabled = true;
             this.listBoxApps.Location = new System.Drawing.Point(121, 3);
             this.listBoxApps.Name = "listBoxApps";
-            this.tableLayoutPanelApps.SetRowSpan(this.listBoxApps, 5);
+            this.tableLayoutPanelApps.SetRowSpan(this.listBoxApps, 6);
             this.listBoxApps.Size = new System.Drawing.Size(493, 273);
             this.listBoxApps.TabIndex = 5;
             // 
@@ -257,6 +260,17 @@
             this.sysInfoLabel.Size = new System.Drawing.Size(72, 17);
             this.sysInfoLabel.Text = "sysInfoLabel";
             // 
+            // buttonUpdateApp
+            // 
+            this.buttonUpdateApp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUpdateApp.Location = new System.Drawing.Point(3, 123);
+            this.buttonUpdateApp.Name = "buttonUpdateApp";
+            this.buttonUpdateApp.Size = new System.Drawing.Size(112, 24);
+            this.buttonUpdateApp.TabIndex = 6;
+            this.buttonUpdateApp.Text = "Update app";
+            this.buttonUpdateApp.UseVisualStyleBackColor = true;
+            this.buttonUpdateApp.Click += new System.EventHandler(this.buttonUpdateApp_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,5 +311,6 @@
         private System.Windows.Forms.Button buttonRmAllUsers;
         private System.Windows.Forms.ListBox listBoxApps;
         private System.Windows.Forms.ListBox listBoxUsers;
+        private System.Windows.Forms.Button buttonUpdateApp;
     }
 }
