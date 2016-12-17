@@ -31,6 +31,7 @@
             this.tabChooser = new System.Windows.Forms.TabControl();
             this.tabPageApps = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelApps = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonUpdateApp = new System.Windows.Forms.Button();
             this.buttonAddApp = new System.Windows.Forms.Button();
             this.buttonEditApp = new System.Windows.Forms.Button();
             this.buttonRemoveApp = new System.Windows.Forms.Button();
@@ -45,7 +46,7 @@
             this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.statusStripSysInfo = new System.Windows.Forms.StatusStrip();
             this.sysInfoLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.buttonUpdateApp = new System.Windows.Forms.Button();
+            this.buttonEditUserApps = new System.Windows.Forms.Button();
             this.tabChooser.SuspendLayout();
             this.tabPageApps.SuspendLayout();
             this.tableLayoutPanelApps.SuspendLayout();
@@ -101,6 +102,17 @@
             this.tableLayoutPanelApps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelApps.Size = new System.Drawing.Size(617, 279);
             this.tableLayoutPanelApps.TabIndex = 0;
+            // 
+            // buttonUpdateApp
+            // 
+            this.buttonUpdateApp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonUpdateApp.Location = new System.Drawing.Point(3, 123);
+            this.buttonUpdateApp.Name = "buttonUpdateApp";
+            this.buttonUpdateApp.Size = new System.Drawing.Size(112, 24);
+            this.buttonUpdateApp.TabIndex = 6;
+            this.buttonUpdateApp.Text = "Update app";
+            this.buttonUpdateApp.UseVisualStyleBackColor = true;
+            this.buttonUpdateApp.Click += new System.EventHandler(this.buttonUpdateApp_Click);
             // 
             // buttonAddApp
             // 
@@ -172,6 +184,7 @@
             this.tableLayoutPanelUsers.ColumnCount = 2;
             this.tableLayoutPanelUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableLayoutPanelUsers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelUsers.Controls.Add(this.buttonEditUserApps, 0, 4);
             this.tableLayoutPanelUsers.Controls.Add(this.buttonAddUser, 0, 0);
             this.tableLayoutPanelUsers.Controls.Add(this.buttonEditUser, 0, 1);
             this.tableLayoutPanelUsers.Controls.Add(this.buttonRmUser, 0, 2);
@@ -180,7 +193,8 @@
             this.tableLayoutPanelUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelUsers.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelUsers.Name = "tableLayoutPanelUsers";
-            this.tableLayoutPanelUsers.RowCount = 5;
+            this.tableLayoutPanelUsers.RowCount = 6;
+            this.tableLayoutPanelUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelUsers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -239,7 +253,7 @@
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.Location = new System.Drawing.Point(121, 3);
             this.listBoxUsers.Name = "listBoxUsers";
-            this.tableLayoutPanelUsers.SetRowSpan(this.listBoxUsers, 5);
+            this.tableLayoutPanelUsers.SetRowSpan(this.listBoxUsers, 6);
             this.listBoxUsers.Size = new System.Drawing.Size(493, 273);
             this.listBoxUsers.TabIndex = 4;
             // 
@@ -260,16 +274,16 @@
             this.sysInfoLabel.Size = new System.Drawing.Size(72, 17);
             this.sysInfoLabel.Text = "sysInfoLabel";
             // 
-            // buttonUpdateApp
+            // buttonEditUserApps
             // 
-            this.buttonUpdateApp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonUpdateApp.Location = new System.Drawing.Point(3, 123);
-            this.buttonUpdateApp.Name = "buttonUpdateApp";
-            this.buttonUpdateApp.Size = new System.Drawing.Size(112, 24);
-            this.buttonUpdateApp.TabIndex = 6;
-            this.buttonUpdateApp.Text = "Update app";
-            this.buttonUpdateApp.UseVisualStyleBackColor = true;
-            this.buttonUpdateApp.Click += new System.EventHandler(this.buttonUpdateApp_Click);
+            this.buttonEditUserApps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonEditUserApps.Location = new System.Drawing.Point(3, 123);
+            this.buttonEditUserApps.Name = "buttonEditUserApps";
+            this.buttonEditUserApps.Size = new System.Drawing.Size(112, 24);
+            this.buttonEditUserApps.TabIndex = 5;
+            this.buttonEditUserApps.Text = "Edit user apps";
+            this.buttonEditUserApps.UseVisualStyleBackColor = true;
+            this.buttonEditUserApps.Click += new System.EventHandler(this.buttonEditUserApps_Click);
             // 
             // MainForm
             // 
@@ -312,5 +326,6 @@
         private System.Windows.Forms.ListBox listBoxApps;
         private System.Windows.Forms.ListBox listBoxUsers;
         private System.Windows.Forms.Button buttonUpdateApp;
+        private System.Windows.Forms.Button buttonEditUserApps;
     }
 }
