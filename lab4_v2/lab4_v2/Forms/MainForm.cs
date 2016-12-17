@@ -24,8 +24,15 @@ namespace lab4_v2.Forms
 
             UpdateSysInfoLabel();
 
-            m_app_manager.AddApplication(new App("app_name", "producer"));
-            m_app_manager.AddApplication(new App("app_name2", "producer2"));
+            App new_app1 = new App("app_name", "producer");
+            App new_app2 = new App("app_name2", "producer2");
+
+            new_app1.InstallationDate = DateTime.Today;
+            new_app2.InstallationDate = DateTime.Today;
+
+            m_app_manager.AddApplication(new_app1);
+            m_app_manager.AddApplication(new_app2);
+            
 
             //m_bs_apps = new BindingSource(m_app_manager.Apps, null);
             //listBoxApps.DataSource = m_bs_apps;
@@ -149,7 +156,8 @@ namespace lab4_v2.Forms
 
         private void buttonEditApp_Click(object sender, EventArgs e)
         {
-            Form edit_app_form = new EditApp(m_app_manager);
+            string target_username = listBoxApps.SelectedItem as string;
+            Form edit_app_form = new EditApp(m_app_manager, target_username);
             edit_app_form.Show();
         }
 
