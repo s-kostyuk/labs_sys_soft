@@ -33,6 +33,7 @@ namespace lab4_v2.Forms
                 textBoxProducer.Text = m_temp_app.Producer;
                 dateTimePickerDateInstalled.Value = m_temp_app.InstallationDate;
                 textBoxVersion.Text = m_temp_app.AppVersion.ToString();
+                m_temp_ci = m_temp_app.MinRequirements;
             }
 
             textBoxOsType.DataBindings.Add(new Binding("Text", m_temp_ci, "OSType"));

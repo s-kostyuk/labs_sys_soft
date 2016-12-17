@@ -93,6 +93,7 @@ namespace lab4_v2
 			Name = _name;
 			Producer = _producer;
 			AppVersion = new Version ();
+            MinRequirements = new ComputerInfo();
 		}
 
         /**********************************************************************************/
