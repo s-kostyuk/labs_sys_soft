@@ -30,11 +30,21 @@ namespace lab4_v2
 
         /**********************************************************************************/
 
-        public SortedDictionary<string, App> Apps
+        public ICollection<string> Apps
         {
             get
             {
-                return m_apps;
+                return m_apps.Keys;
+            }
+        }
+
+        /**********************************************************************************/
+
+        public ICollection<string> Users
+        {
+            get
+            {
+                return m_users.Keys;
             }
         }
 

@@ -28,8 +28,10 @@ namespace lab4_v2.Forms
             m_app_manager.AddApplication(new App("app_name2", "producer2"));
 
             listBoxApps.DataSource = new BindingSource(m_app_manager.Apps, null);
+            
+            m_app_manager.AddUser(new User("username1", "passwd"));
 
-            listBoxApps.DisplayMember = "Key";
+            listBoxUsers.DataSource = new BindingSource(m_app_manager.Users, null);
         }
 
         /**********************************************************************************/
