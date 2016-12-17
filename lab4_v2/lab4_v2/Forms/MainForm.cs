@@ -254,7 +254,9 @@ namespace lab4_v2.Forms
 
         private void buttonEditUserApps_Click(object sender, EventArgs e)
         {
-            
+            string target_username = listBoxUsers.SelectedItem as string;
+            EditUserApps form = new EditUserApps(m_app_manager, target_username);
+            form.Show();
         }
 
         /**********************************************************************************/
