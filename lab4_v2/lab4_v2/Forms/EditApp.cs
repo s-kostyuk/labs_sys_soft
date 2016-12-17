@@ -29,17 +29,10 @@ namespace lab4_v2.Forms
             {
                 m_temp_app = m_app_manager.GetApplication(m_app_full_name);
 
-                textBoxAppName.Text = m_temp_app.Name;
-                textBoxProducer.Text = m_temp_app.Producer;
-                dateTimePickerDateInstalled.Value = m_temp_app.InstallationDate;
-                textBoxVersion.Text = m_temp_app.AppVersion.ToString();
-                m_temp_ci = m_temp_app.MinRequirements;
+                ReloadTextBoxes();
             }
 
-            textBoxOsType.DataBindings.Add(new Binding("Text", m_temp_ci, "OSType"));
-            textBoxCpuFreq.DataBindings.Add(new Binding("Text", m_temp_ci, "CpuFreq"));
-            textBoxRamCapacity.DataBindings.Add(new Binding("Text", m_temp_ci, "RamCapacity"));
-            textBoxGpuMem.DataBindings.Add(new Binding("Text", m_temp_ci, "GpuMem"));
+            RebindTextBoxes();
         }
 
         /**********************************************************************************/
@@ -51,9 +44,36 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
+        private void ReloadTextBoxes()
+        {
+            textBoxAppName.Text = m_temp_app.Name;
+            textBoxProducer.Text = m_temp_app.Producer;
+            dateTimePickerDateInstalled.Value = m_temp_app.InstallationDate;
+            textBoxVersion.Text = m_temp_app.AppVersion.ToString();
+            m_temp_ci = new ComputerInfo(m_temp_app.MinRequirements);
+        }
+
+        /**********************************************************************************/
+
+        private void RebindTextBoxes()
+        {
+            textBoxOsType.DataBindings.Clear();
+            textBoxCpuFreq.DataBindings.Clear();
+            textBoxRamCapacity.DataBindings.Clear();
+            textBoxGpuMem.DataBindings.Clear();
+
+            textBoxOsType.DataBindings.Add(new Binding("Text", m_temp_ci, "OSType"));
+            textBoxCpuFreq.DataBindings.Add(new Binding("Text", m_temp_ci, "CpuFreq"));
+            textBoxRamCapacity.DataBindings.Add(new Binding("Text", m_temp_ci, "RamCapacity"));
+            textBoxGpuMem.DataBindings.Add(new Binding("Text", m_temp_ci, "GpuMem"));
+        }
+
+        /**********************************************************************************/
+
         private void buttonReset_Click(object sender, EventArgs e)
         {
-
+            ReloadTextBoxes();
+            RebindTextBoxes();
         }
 
         /**********************************************************************************/
