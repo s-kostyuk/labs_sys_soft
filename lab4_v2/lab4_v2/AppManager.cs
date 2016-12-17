@@ -3,8 +3,21 @@ using System.Collections.Generic;
 
 namespace lab4_v2
 {
+    //--------------------------------------------------------------------------------------
 
-	public class AppManager
+    public class NewUserEventArgs : EventArgs
+    {
+        public NewUserEventArgs(string _new_username)
+        {
+            NewUsername = _new_username;
+        }
+
+        public string NewUsername { get; private set; }
+    }
+
+    //--------------------------------------------------------------------------------------
+
+    public class AppManager
 	{
 		/**********************************************************************************/
 
@@ -30,21 +43,21 @@ namespace lab4_v2
 
         /**********************************************************************************/
 
-        public ICollection<string> Apps
+        public SortedDictionary<string, App> Apps
         {
             get
             {
-                return m_apps.Keys;
+                return m_apps;
             }
         }
 
         /**********************************************************************************/
 
-        public ICollection<string> Users
+        public SortedDictionary<string, User> Users
         {
             get
             {
-                return m_users.Keys;
+                return m_users;
             }
         }
 
@@ -64,12 +77,22 @@ namespace lab4_v2
 		public event EventHandler AllAppsRemoved;
 		public event EventHandler AllUsersRemoved;
         public event EventHandler ComputerInfoUpdated;
+        public event EventHandler<NewUserEventArgs> NewUserAdded;
 
         protected virtual void OnSomeChange(EventHandler _handler)
         {
             if (_handler != null)
             {
                 _handler(this, EventArgs.Empty);
+            }
+        }
+
+        protected virtual void OnNewUserAdded(string _new_username)
+        {
+            if (NewUserAdded != null)
+            {
+                NewUserEventArgs args = new NewUserEventArgs(_new_username);
+                NewUserAdded(this, args);
             }
         }
 
@@ -165,13 +188,15 @@ namespace lab4_v2
 
 		public void AddUser (User _u)
 		{
-			m_users.Add (_u.Username, _u);
+            m_users.Add (_u.Username, _u);
 			m_ram_usage.Add (_u.Username, 0);
-		}
+
+            OnNewUserAdded(_u.Username);
+        }
 
 		/**********************************************************************************/
 
-		public void RemoveUser (string _username)
+        public void RemoveUser (string _username)
 		{
 			m_users.Remove (_username);
 			m_ram_usage.Remove (_username);
@@ -217,6 +242,7 @@ namespace lab4_v2
 		public void RemoveAllUsers ()
 		{
 			m_users.Clear ();
+            m_ram_usage.Clear();
 			OnSomeChange (AllUsersRemoved);
 		}
 

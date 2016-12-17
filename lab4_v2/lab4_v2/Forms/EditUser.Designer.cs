@@ -30,16 +30,16 @@
         {
             this.pcParamsEditPanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxOldPass = new System.Windows.Forms.TextBox();
+            this.textBoxNewPass = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelOldPass = new System.Windows.Forms.Label();
-            this.textBoxNewPass = new System.Windows.Forms.TextBox();
             this.labelNewPass = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.pcParamsEditPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,18 +75,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(260, 36);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // buttonReset
-            // 
-            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.Location = new System.Drawing.Point(3, 3);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(80, 30);
-            this.buttonReset.TabIndex = 0;
-            this.buttonReset.Text = "Reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            // 
             // buttonApply
             // 
             this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -98,6 +86,7 @@
             this.buttonApply.TabIndex = 1;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // buttonCancel
             // 
@@ -110,6 +99,7 @@
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -150,6 +140,14 @@
             this.textBoxOldPass.Size = new System.Drawing.Size(154, 20);
             this.textBoxOldPass.TabIndex = 1;
             // 
+            // textBoxNewPass
+            // 
+            this.textBoxNewPass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxNewPass.Location = new System.Drawing.Point(103, 57);
+            this.textBoxNewPass.Name = "textBoxNewPass";
+            this.textBoxNewPass.Size = new System.Drawing.Size(154, 20);
+            this.textBoxNewPass.TabIndex = 2;
+            // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
@@ -172,14 +170,6 @@
             this.labelOldPass.Text = "Old password:";
             this.labelOldPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBoxNewPass
-            // 
-            this.textBoxNewPass.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxNewPass.Location = new System.Drawing.Point(103, 57);
-            this.textBoxNewPass.Name = "textBoxNewPass";
-            this.textBoxNewPass.Size = new System.Drawing.Size(154, 20);
-            this.textBoxNewPass.TabIndex = 2;
-            // 
             // labelNewPass
             // 
             this.labelNewPass.AutoSize = true;
@@ -190,6 +180,19 @@
             this.labelNewPass.TabIndex = 6;
             this.labelNewPass.Text = "New password:";
             this.labelNewPass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReset.Location = new System.Drawing.Point(3, 3);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(80, 30);
+            this.buttonReset.TabIndex = 0;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // EditUser
             // 
@@ -212,7 +215,6 @@
 
         private System.Windows.Forms.Panel pcParamsEditPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -222,5 +224,6 @@
         private System.Windows.Forms.Label labelOldPass;
         private System.Windows.Forms.TextBox textBoxNewPass;
         private System.Windows.Forms.Label labelNewPass;
+        private System.Windows.Forms.Button buttonReset;
     }
 }

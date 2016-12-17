@@ -27,11 +27,23 @@ namespace lab4_v2.Forms
             m_app_manager.AddApplication(new App("app_name", "producer"));
             m_app_manager.AddApplication(new App("app_name2", "producer2"));
 
-            listBoxApps.DataSource = new BindingSource(m_app_manager.Apps, null);
-            
+            //m_bs_apps = new BindingSource(m_app_manager.Apps, null);
+            //listBoxApps.DataSource = m_bs_apps;
+            //listBoxApps.DisplayMember = "Key";
+            //listBoxApps.ValueMember = "Key";
+
+            UpdateListBoxApps();
+
             m_app_manager.AddUser(new User("username1", "passwd"));
 
-            listBoxUsers.DataSource = new BindingSource(m_app_manager.Users, null);
+            //m_bs_users = new BindingSource(m_app_manager.Users, null);
+            //listBoxUsers.DataSource = m_bs_users;
+            //listBoxUsers.DisplayMember = "Key";
+            //listBoxUsers.ValueMember = "Key";
+
+            UpdateListBoxUsers();
+
+            m_app_manager.NewUserAdded += ListBoxAddUser;
         }
 
         /**********************************************************************************/
@@ -40,6 +52,41 @@ namespace lab4_v2.Forms
         /// Reference to AppManager instance
         /// </summary>
         private AppManager m_app_manager;
+        //private BindingSource m_bs_apps;
+        //private BindingSource m_bs_users;
+
+        /**********************************************************************************/
+
+        public void UpdateListBoxApps()
+        {
+            listBoxUsers.Items.Clear();
+
+            foreach (KeyValuePair<string, App> app in m_app_manager.Apps)
+            {
+                listBoxApps.Items.Add(app.Key);
+            }
+        }
+
+        /**********************************************************************************/
+
+        public void UpdateListBoxUsers()
+        {
+            listBoxUsers.Items.Clear();
+
+            foreach (KeyValuePair<string, User> user in m_app_manager.Users)
+            {
+                listBoxUsers.Items.Add(user.Key);
+            }
+        }
+
+        /**********************************************************************************/
+
+        public void ListBoxAddUser(object sender, NewUserEventArgs e)
+        {
+            AppManager app_manager = sender as AppManager;
+
+            listBoxUsers.Items.Add(e.NewUsername);
+        }
 
         /**********************************************************************************/
 
@@ -99,14 +146,22 @@ namespace lab4_v2.Forms
 
         private void buttonRemoveApp_Click(object sender, EventArgs e)
         {
+            string on_delete = listBoxApps.SelectedItem as string;
 
+            m_app_manager.RemoveUser(
+                on_delete
+            );
+
+            listBoxApps.Items.Remove(on_delete);
         }
 
         /**********************************************************************************/
 
         private void buttonRemoveAllApps_Click(object sender, EventArgs e)
         {
+            m_app_manager.RemoveAllApps();
 
+            listBoxApps.Items.Clear();
         }
 
         /**********************************************************************************/
@@ -131,7 +186,8 @@ namespace lab4_v2.Forms
 
         private void buttonEditUser_Click(object sender, EventArgs e)
         {
-            EditUser edit_user_form = new EditUser(m_app_manager);
+            string target_username = listBoxUsers.SelectedItem as string;
+            EditUser edit_user_form = new EditUser(m_app_manager, target_username);
             edit_user_form.SetUsernameReadOnly(true);
             edit_user_form.SetOldPassReadOnly(false);
             edit_user_form.Show();
@@ -141,14 +197,22 @@ namespace lab4_v2.Forms
 
         private void buttonRmUser_Click(object sender, EventArgs e)
         {
+            string on_delete = listBoxUsers.SelectedItem as string;
 
+            m_app_manager.RemoveUser(
+                on_delete
+            );
+
+            listBoxUsers.Items.Remove(on_delete);
         }
 
         /**********************************************************************************/
 
         private void buttonRmAllUsers_Click(object sender, EventArgs e)
         {
+            m_app_manager.RemoveAllUsers();
 
+            listBoxUsers.Items.Clear();
         }
 
         /**********************************************************************************/
