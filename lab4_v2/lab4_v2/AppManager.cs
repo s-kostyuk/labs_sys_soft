@@ -5,14 +5,14 @@ namespace lab4_v2
 {
     //--------------------------------------------------------------------------------------
 
-    public class NewUserEventArgs : EventArgs
+    public class NewElementEventArgs : EventArgs
     {
-        public NewUserEventArgs(string _new_username)
+        public NewElementEventArgs(string _new_element_name)
         {
-            NewUsername = _new_username;
+            NewElementName = _new_element_name;
         }
 
-        public string NewUsername { get; private set; }
+        public string NewElementName { get; private set; }
     }
 
     //--------------------------------------------------------------------------------------
@@ -77,7 +77,10 @@ namespace lab4_v2
 		public event EventHandler AllAppsRemoved;
 		public event EventHandler AllUsersRemoved;
         public event EventHandler ComputerInfoUpdated;
-        public event EventHandler<NewUserEventArgs> NewUserAdded;
+        public event EventHandler<NewElementEventArgs> NewUserAdded;
+        public event EventHandler<NewElementEventArgs> NewAppAdded;
+
+        /**********************************************************************************/
 
         protected virtual void OnSomeChange(EventHandler _handler)
         {
@@ -91,8 +94,17 @@ namespace lab4_v2
         {
             if (NewUserAdded != null)
             {
-                NewUserEventArgs args = new NewUserEventArgs(_new_username);
+                NewElementEventArgs args = new NewElementEventArgs(_new_username);
                 NewUserAdded(this, args);
+            }
+        }
+
+        protected virtual void OnNewAppAdded(string _new_app_name)
+        {
+            if (NewAppAdded != null)
+            {
+                NewElementEventArgs args = new NewElementEventArgs(_new_app_name);
+                NewAppAdded(this, args);
             }
         }
 
@@ -148,6 +160,8 @@ namespace lab4_v2
 		public void AddApplication (App _app)
 		{
 			m_apps.Add (_app.FullName, _app);
+
+            OnNewAppAdded(_app.FullName);
 		}
 
 		/**********************************************************************************/
@@ -163,10 +177,12 @@ namespace lab4_v2
 
 		public App GetApplication (string _app_id)
 		{
-            App returned;
-			m_apps.TryGetValue(_app_id, out returned);
+            //App returned;
+            //m_apps.TryGetValue(_app_id, out returned);
 
-            return returned;
+            //return returned;
+
+            return m_apps[_app_id];
         }
 
 		/**********************************************************************************/

@@ -44,6 +44,7 @@ namespace lab4_v2.Forms
             UpdateListBoxUsers();
 
             m_app_manager.NewUserAdded += ListBoxAddUser;
+            m_app_manager.NewAppAdded += ListBoxAddApp;
         }
 
         /**********************************************************************************/
@@ -81,11 +82,20 @@ namespace lab4_v2.Forms
 
         /**********************************************************************************/
 
-        public void ListBoxAddUser(object sender, NewUserEventArgs e)
+        public void ListBoxAddUser(object sender, NewElementEventArgs e)
         {
             AppManager app_manager = sender as AppManager;
 
-            listBoxUsers.Items.Add(e.NewUsername);
+            listBoxUsers.Items.Add(e.NewElementName);
+        }
+
+        /**********************************************************************************/
+
+        public void ListBoxAddApp(object sender, NewElementEventArgs e)
+        {
+            AppManager app_manager = sender as AppManager;
+
+            listBoxApps.Items.Add(e.NewElementName);
         }
 
         /**********************************************************************************/

@@ -34,6 +34,14 @@
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxOsType = new System.Windows.Forms.TextBox();
+            this.textBoxCpuFreq = new System.Windows.Forms.TextBox();
+            this.textBoxRamCapacity = new System.Windows.Forms.TextBox();
+            this.textBoxGpuMem = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.labelDateInstalled = new System.Windows.Forms.Label();
             this.textBoxAppName = new System.Windows.Forms.TextBox();
             this.textBoxProducer = new System.Windows.Forms.TextBox();
@@ -42,14 +50,6 @@
             this.labelProducer = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.dateTimePickerDateInstalled = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxGpuMem = new System.Windows.Forms.TextBox();
-            this.textBoxRamCapacity = new System.Windows.Forms.TextBox();
-            this.textBoxCpuFreq = new System.Windows.Forms.TextBox();
-            this.textBoxOsType = new System.Windows.Forms.TextBox();
             this.pcParamsEditPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -66,6 +66,7 @@
             this.buttonReset.TabIndex = 0;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // pcParamsEditPanel
             // 
@@ -108,6 +109,7 @@
             this.buttonApply.TabIndex = 1;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // buttonCancel
             // 
@@ -120,6 +122,7 @@
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -158,6 +161,82 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(285, 243);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // textBoxOsType
+            // 
+            this.textBoxOsType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxOsType.Location = new System.Drawing.Point(103, 123);
+            this.textBoxOsType.Name = "textBoxOsType";
+            this.textBoxOsType.Size = new System.Drawing.Size(179, 20);
+            this.textBoxOsType.TabIndex = 16;
+            // 
+            // textBoxCpuFreq
+            // 
+            this.textBoxCpuFreq.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCpuFreq.Location = new System.Drawing.Point(103, 153);
+            this.textBoxCpuFreq.Name = "textBoxCpuFreq";
+            this.textBoxCpuFreq.Size = new System.Drawing.Size(179, 20);
+            this.textBoxCpuFreq.TabIndex = 15;
+            // 
+            // textBoxRamCapacity
+            // 
+            this.textBoxRamCapacity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxRamCapacity.Location = new System.Drawing.Point(103, 183);
+            this.textBoxRamCapacity.Name = "textBoxRamCapacity";
+            this.textBoxRamCapacity.Size = new System.Drawing.Size(179, 20);
+            this.textBoxRamCapacity.TabIndex = 14;
+            // 
+            // textBoxGpuMem
+            // 
+            this.textBoxGpuMem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxGpuMem.Location = new System.Drawing.Point(103, 213);
+            this.textBoxGpuMem.Name = "textBoxGpuMem";
+            this.textBoxGpuMem.Size = new System.Drawing.Size(179, 20);
+            this.textBoxGpuMem.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(3, 210);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 33);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "GPU memory:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(3, 180);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 30);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "RAM Capacity:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(3, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 30);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "OS type:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 30);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "CPU frequency:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelDateInstalled
             // 
@@ -234,82 +313,6 @@
             this.dateTimePickerDateInstalled.Name = "dateTimePickerDateInstalled";
             this.dateTimePickerDateInstalled.Size = new System.Drawing.Size(179, 20);
             this.dateTimePickerDateInstalled.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 150);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 30);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "CPU frequency:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 120);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 30);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "OS type:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 180);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 30);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "RAM Capacity:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 210);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 33);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "GPU memory:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBoxGpuMem
-            // 
-            this.textBoxGpuMem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxGpuMem.Location = new System.Drawing.Point(103, 213);
-            this.textBoxGpuMem.Name = "textBoxGpuMem";
-            this.textBoxGpuMem.Size = new System.Drawing.Size(179, 20);
-            this.textBoxGpuMem.TabIndex = 13;
-            // 
-            // textBoxRamCapacity
-            // 
-            this.textBoxRamCapacity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxRamCapacity.Location = new System.Drawing.Point(103, 183);
-            this.textBoxRamCapacity.Name = "textBoxRamCapacity";
-            this.textBoxRamCapacity.Size = new System.Drawing.Size(179, 20);
-            this.textBoxRamCapacity.TabIndex = 14;
-            // 
-            // textBoxCpuFreq
-            // 
-            this.textBoxCpuFreq.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCpuFreq.Location = new System.Drawing.Point(103, 153);
-            this.textBoxCpuFreq.Name = "textBoxCpuFreq";
-            this.textBoxCpuFreq.Size = new System.Drawing.Size(179, 20);
-            this.textBoxCpuFreq.TabIndex = 15;
-            // 
-            // textBoxOsType
-            // 
-            this.textBoxOsType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxOsType.Location = new System.Drawing.Point(103, 123);
-            this.textBoxOsType.Name = "textBoxOsType";
-            this.textBoxOsType.Size = new System.Drawing.Size(179, 20);
-            this.textBoxOsType.TabIndex = 16;
             // 
             // EditApp
             // 
