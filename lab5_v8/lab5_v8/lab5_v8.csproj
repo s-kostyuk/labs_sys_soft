@@ -31,11 +31,8 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="ISortedRealEnumerator.cs" />
-    <Compile Include="RealArrayEnumerator.cs" />
-    <Compile Include="TestRealArrayEnumerator.cs" />
-    <Compile Include="RealMerger.cs" />
     <Compile Include="TestRealMerger.cs" />
+    <Compile Include="SortedMerger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

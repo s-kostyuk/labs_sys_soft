@@ -17,13 +17,13 @@ namespace lab5_v8
 			double[] result = new double[exp_result.Length];
 			int result_index = 0;
 
-			RealMerger merger = new RealMerger ();
-			merger.SetWriter ((double new_value) => {
-				result [result_index++] = new_value;
+			SortedMerger merger = new SortedMerger ();
+			merger.SetWriter ((object new_value) => {
+				result [result_index++] = (double)new_value;
 			}
 			);
 
-			merger.Merge (ref test_array1, ref test_array2);
+			merger.Merge (test_array1.GetEnumerator(), test_array2.GetEnumerator());
 
 			Assert.AreEqual (exp_result, result);
 		}
