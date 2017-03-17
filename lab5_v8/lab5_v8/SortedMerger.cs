@@ -12,7 +12,7 @@ namespace lab5_v8
 			writer = w;
 		}
 
-		private static void DummyWriter( object new_element) {
+		private static void DummyWriter( object new_element ) {
 			
 		}
 
