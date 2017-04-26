@@ -31,12 +31,12 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="SortedMerger.cs" />
     <Compile Include="BinaryFileDoubleEnumerable.cs" />
     <Compile Include="Tests\TestRealMerger.cs" />
     <Compile Include="Tests\TestBinaryFileDoubleEnumerator.cs" />
     <Compile Include="RandomSortedDoubleGenerator.cs" />
     <Compile Include="Tests\RandomSortedDoubleGeneratorTest.cs" />
+    <Compile Include="SortedEnumerablesMerger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

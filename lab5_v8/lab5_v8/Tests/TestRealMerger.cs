@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace lab5_v8
 {
@@ -14,18 +15,12 @@ namespace lab5_v8
 
 			double[] exp_result = { -22, -1, 2, 2, 3, 6, 7, 8, 9, 10, 11, 23, 66, 78, 88, 89, 90};
 
-			double[] result = new double[exp_result.Length];
-			int result_index = 0;
-
-			SortedMerger merger = new SortedMerger ();
-			merger.SetWriter ((object new_value) => {
-				result [result_index++] = (double)new_value;
-			}
+			IEnumerable<double> merged = SortedEnumerablesMerger<double>.Merge(
+				test_array1,
+				test_array2
 			);
 
-			merger.Merge (test_array1.GetEnumerator(), test_array2.GetEnumerator());
-
-			Assert.AreEqual (exp_result, result);
+			Assert.AreEqual (exp_result, merged);
 		}
 	}
 }
