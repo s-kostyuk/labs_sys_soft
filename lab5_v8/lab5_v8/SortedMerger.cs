@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace lab5_v8
 {
@@ -16,10 +16,11 @@ namespace lab5_v8
 			
 		}
 
-		public void Merge (
-			IEnumerator en1,
-			IEnumerator en2
-		) 
+		public void Merge<T> (
+			IEnumerator<T> en1,
+			IEnumerator<T> en2
+		)
+			where T: IComparable
 		{
 			bool has_next_1 = en1.MoveNext ();
 			bool has_next_2 = en2.MoveNext ();
@@ -46,7 +47,7 @@ namespace lab5_v8
 				}
 
 				// Иначе - выбираем новые элементы
-				if (((IComparable)en1.Current).CompareTo((IComparable)en2.Current) < 0) {  // Если в первом массиве меньшее число - записываем его и идем дальше
+				if ((en1.Current).CompareTo(en2.Current) < 0) {  // Если в первом массиве меньшее число - записываем его и идем дальше
 					this.writer (en1.Current);
 
 					has_next_1 = en1.MoveNext ();
