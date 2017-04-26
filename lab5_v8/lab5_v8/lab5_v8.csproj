@@ -34,9 +34,9 @@
     <Compile Include="BinaryFileDoubleEnumerable.cs" />
     <Compile Include="Tests\TestRealMerger.cs" />
     <Compile Include="Tests\TestBinaryFileDoubleEnumerator.cs" />
-    <Compile Include="RandomSortedDoubleGenerator.cs" />
     <Compile Include="Tests\RandomSortedDoubleGeneratorTest.cs" />
     <Compile Include="SortedEnumerablesMerger.cs" />
+    <Compile Include="RandomOrderedDoubles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
