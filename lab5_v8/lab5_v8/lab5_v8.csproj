@@ -33,7 +33,6 @@
   <ItemGroup>
     <Compile Include="BinaryDoublesFileGenerator.cs" />
     <Compile Include="BinaryFileDoubleEnumerable.cs" />
-    <Compile Include="BinarySortedDoubleFileGenerator.cs" />
     <Compile Include="Tests\TestBinaryFileDoubleEnumerator.cs" />
     <Compile Include="Tests\RandomSortedDoubleGeneratorTest.cs" />
     <Compile Include="SortedEnumerablesMerger.cs" />
