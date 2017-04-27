@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+
+/*****************************************************************************/
 
 namespace lab5_v8
 {
@@ -11,7 +12,7 @@ namespace lab5_v8
 		}
 
 		/// <summary>
-		/// Гегератор последовательности случайно увеличивающихся значений
+		/// Генератор последовательности случайно увеличивающихся значений
 		/// </summary>
 		/// <param name="min">Минимальное значение</param>
 		/// <param name="multiplier">Множитель (максимальный шаг)</param>
@@ -26,7 +27,6 @@ namespace lab5_v8
 				yield return current;
 			}
 		}
-
 	}
 }
 

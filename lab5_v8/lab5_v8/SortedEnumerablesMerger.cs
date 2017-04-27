@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/*****************************************************************************/
+
 namespace lab5_v8
 {
 	public static class SortedEnumerablesMerger<T> // Обобщение: нужный тип указывается в <скобках>

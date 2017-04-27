@@ -17,8 +17,6 @@ namespace lab5_v8_gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-
-
         }
     }
 }
