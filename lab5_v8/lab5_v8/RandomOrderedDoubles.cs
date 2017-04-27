@@ -17,12 +17,12 @@ namespace lab5_v8
 		/// <param name="multiplier">Множитель (максимальный шаг)</param>
 		/// <param name="nOfNumbers">Количество генерируемых чисел</param>
 		public static IEnumerable<double> Generator(double min, double multiplier, int nOfNumbers) {
-			double current;
+			double current = min;
 			Random random = new Random();
 
 			for(int i = 0; i < nOfNumbers; i++)
 			{
-				current = get_next(random, min, multiplier);
+				current = get_next(random, current, multiplier);
 				yield return current;
 			}
 		}
