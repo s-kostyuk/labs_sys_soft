@@ -3,6 +3,8 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+// Good example: https://msdn.microsoft.com/en-us/library/9eekhta0(v=vs.110).aspx
+
 namespace lab5_v8
 {
 	public class BinaryFileDoubleEnumerator : IEnumerator<double>
@@ -11,10 +13,6 @@ namespace lab5_v8
 		private double m_current;
 		private bool m_is_got_first = false;
 		private bool m_elements_left = true;
-
-		public void Dispose() {
-			m_reader.Dispose ();
-		}
 
 		public BinaryFileDoubleEnumerator(Stream input)
 		{
@@ -63,7 +61,34 @@ namespace lab5_v8
 
 		public void Reset()
 		{
-			this.m_reader.BaseStream.Position = 0;
+			m_reader.BaseStream.Seek(0, SeekOrigin.Begin);
+			m_is_got_first = false;
+		}
+
+		private bool m_wasDisposed = false;
+
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (!this.m_wasDisposed)
+			{
+				if (m_reader != null) {
+					m_reader.Close();
+					m_reader.Dispose();
+				}
+			}
+
+			this.m_wasDisposed = true;
+		}
+
+		~BinaryFileDoubleEnumerator()
+		{
+			Dispose(false);
 		}
 
 	}
