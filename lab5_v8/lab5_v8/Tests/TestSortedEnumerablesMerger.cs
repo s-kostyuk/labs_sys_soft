@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace lab5_v8
 {
 	[TestFixture ()]
-	public class TestRealMerger
+	public class TestSortedEnumerablesMerger
 	{
 		[Test ()]
 		public void TestMerge ()

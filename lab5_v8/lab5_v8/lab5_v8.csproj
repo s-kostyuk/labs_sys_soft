@@ -32,11 +32,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="BinaryFileDoubleEnumerable.cs" />
-    <Compile Include="Tests\TestRealMerger.cs" />
     <Compile Include="Tests\TestBinaryFileDoubleEnumerator.cs" />
     <Compile Include="Tests\RandomSortedDoubleGeneratorTest.cs" />
     <Compile Include="SortedEnumerablesMerger.cs" />
     <Compile Include="RandomOrderedDoubles.cs" />
+    <Compile Include="Tests\TestSortedEnumerablesMerger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
