@@ -1,15 +1,20 @@
 ﻿using System;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace lab5_v8
 {
-	public class BinaryFileDoubleEnumerator : IEnumerator
+	public class BinaryFileDoubleEnumerator : IEnumerator<double>
 	{
 		private BinaryReader m_reader;
 		private double m_current;
 		private bool m_is_got_first = false;
 		private bool m_elements_left = true;
+
+		public void Dispose() {
+			m_reader.Dispose ();
+		}
 
 		public BinaryFileDoubleEnumerator(Stream input)
 		{
@@ -31,7 +36,7 @@ namespace lab5_v8
 			return this.m_elements_left;
 		}
 
-		public object Current {
+		public double Current {
 			get {
 				if (!this.m_is_got_first) {
 					throw new InvalidOperationException ("MoveNext() must be called at least once");
@@ -45,6 +50,17 @@ namespace lab5_v8
 			}
 		}
 
+		private object Current1
+		{
+
+			get { return this.Current; }
+		}
+
+		object IEnumerator.Current
+		{
+			get { return Current1; }
+		}
+
 		public void Reset()
 		{
 			this.m_reader.BaseStream.Position = 0;
@@ -52,7 +68,7 @@ namespace lab5_v8
 
 	}
 
-	public class BinaryFileDoubleEnumerable : IEnumerable
+	public class BinaryFileDoubleEnumerable : IEnumerable<double>
 	{
 		private string m_filename;
 
@@ -61,12 +77,23 @@ namespace lab5_v8
 			this.m_filename = fileName;
 		}
 
-		public IEnumerator GetEnumerator()
+		public IEnumerator<double> GetEnumerator()
 		{
 			return new BinaryFileDoubleEnumerator (
 				File.Open (this.m_filename, FileMode.Open)
 			);
 		}
+
+		private IEnumerator GetEnumerator1()
+		{
+			return this.GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator1();
+		}
+
 	}
 }
 
