@@ -65,7 +65,7 @@ namespace lab5_v8
 			m_is_got_first = false;
 		}
 
-		private bool m_wasDisposed = false;
+		private bool m_was_disposed = false;
 
 		public void Dispose()
 		{
@@ -75,7 +75,7 @@ namespace lab5_v8
 
 		protected virtual void Dispose(bool disposing)
 		{
-			if (!this.m_wasDisposed)
+			if (!this.m_was_disposed)
 			{
 				if (m_reader != null) {
 					m_reader.Close();
@@ -83,7 +83,7 @@ namespace lab5_v8
 				}
 			}
 
-			this.m_wasDisposed = true;
+			this.m_was_disposed = true;
 		}
 
 		~BinaryFileDoubleEnumerator()
