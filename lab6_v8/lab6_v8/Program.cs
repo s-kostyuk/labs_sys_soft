@@ -21,7 +21,9 @@ namespace lab6_v8
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(controller));
+
+            Form mf = new MainForm(controller);
+            Application.Run(mf);
         }
     }
 }
