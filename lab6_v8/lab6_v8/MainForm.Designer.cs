@@ -58,6 +58,8 @@
 			this.dataGridViewBooks.Columns[1].Name = "Title";
 			this.dataGridViewBooks.Columns[2].Name = "Publisher";
 			this.dataGridViewBooks.Columns[3].Name = "Year";
+			this.dataGridViewBooks.MultiSelect = false;
+			this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // splitContainerBooksMenu
             // 
