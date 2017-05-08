@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 
+/*****************************************************************************/
+
 namespace lab5_v8
 {
     public static class BinaryDoublesFileGenerator
@@ -21,7 +23,7 @@ namespace lab5_v8
 
         public static void EnumerableToFile(IEnumerable<double> source, string path)
         {
-            Stream target = File.Open(path, FileMode.OpenOrCreate);
+			Stream target = File.Open(path, FileMode.OpenOrCreate);
 
             BinaryWriter writer = new BinaryWriter(target);
 
@@ -41,3 +43,5 @@ namespace lab5_v8
 
     }
 }
+
+/*****************************************************************************/
