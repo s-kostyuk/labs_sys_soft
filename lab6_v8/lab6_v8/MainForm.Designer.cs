@@ -36,6 +36,10 @@
             this.buttonRemoveBook = new System.Windows.Forms.Button();
             this.buttonAuthorsMenu = new System.Windows.Forms.Button();
             this.buttonPublishersMenu = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumnAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnPublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBooksMenu)).BeginInit();
             this.splitContainerBooksMenu.Panel1.SuspendLayout();
@@ -48,18 +52,19 @@
             // 
             this.dataGridViewBooks.AllowUserToAddRows = false;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumnAuthor,
+            this.dataGridViewTextBoxColumnTitle,
+            this.dataGridViewTextBoxColumnPublisher,
+            this.dataGridViewTextBoxColumnYear});
             this.dataGridViewBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBooks.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewBooks.MultiSelect = false;
             this.dataGridViewBooks.Name = "dataGridViewBooks";
+            this.dataGridViewBooks.ReadOnly = true;
+            this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBooks.Size = new System.Drawing.Size(546, 190);
             this.dataGridViewBooks.TabIndex = 0;
-			this.dataGridViewBooks.ColumnCount = 4;
-			this.dataGridViewBooks.Columns[0].Name = "Author";
-			this.dataGridViewBooks.Columns[1].Name = "Title";
-			this.dataGridViewBooks.Columns[2].Name = "Publisher";
-			this.dataGridViewBooks.Columns[3].Name = "Year";
-			this.dataGridViewBooks.MultiSelect = false;
-			this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // splitContainerBooksMenu
             // 
@@ -139,6 +144,30 @@
             this.buttonPublishersMenu.Text = "Publishers Menu";
             this.buttonPublishersMenu.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewTextBoxColumnAuthor
+            // 
+            this.dataGridViewTextBoxColumnAuthor.HeaderText = "Author";
+            this.dataGridViewTextBoxColumnAuthor.Name = "dataGridViewTextBoxColumnAuthor";
+            this.dataGridViewTextBoxColumnAuthor.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnTitle
+            // 
+            this.dataGridViewTextBoxColumnTitle.HeaderText = "Title";
+            this.dataGridViewTextBoxColumnTitle.Name = "dataGridViewTextBoxColumnTitle";
+            this.dataGridViewTextBoxColumnTitle.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnPublisher
+            // 
+            this.dataGridViewTextBoxColumnPublisher.HeaderText = "Publisher";
+            this.dataGridViewTextBoxColumnPublisher.Name = "dataGridViewTextBoxColumnPublisher";
+            this.dataGridViewTextBoxColumnPublisher.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnYear
+            // 
+            this.dataGridViewTextBoxColumnYear.HeaderText = "Year";
+            this.dataGridViewTextBoxColumnYear.Name = "dataGridViewTextBoxColumnYear";
+            this.dataGridViewTextBoxColumnYear.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +196,10 @@
         private System.Windows.Forms.Button buttonRemoveBook;
         private System.Windows.Forms.Button buttonAuthorsMenu;
         private System.Windows.Forms.Button buttonPublishersMenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnPublisher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnYear;
     }
 }
 
