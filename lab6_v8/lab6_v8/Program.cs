@@ -22,7 +22,8 @@ namespace lab6_v8
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Form mf = new MainForm(controller);
+            MainForm mf = new MainForm();
+			mf.ImportBooks (controller);
             Application.Run(mf);
         }
     }

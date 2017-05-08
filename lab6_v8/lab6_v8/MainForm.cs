@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab6_v8.Model;
 
 /*****************************************************************************/
 
@@ -14,20 +15,25 @@ namespace lab6_v8
 {
     public partial class MainForm : Form
     {
+        
         /*-------------------------------------------------------------------*/
 
-        private Controller m_controller;
-
-        /*-------------------------------------------------------------------*/
-
-        public MainForm(Controller _controller)
+        public MainForm()
         {
-            m_controller = _controller;
-
             InitializeComponent();
         }
 
         /*-------------------------------------------------------------------*/
+
+		public void ImportBooks (Controller _controller) {
+			foreach (Book book in _controller.BooksBinding) {
+				this.dataGridViewBooks.Rows.Add(
+					new String[] { book.AuthorName, book.Title, book.PublisherName, book.Year.ToString() }
+				);
+			}
+		}
+
+		/*-------------------------------------------------------------------*/
 
     }
 }

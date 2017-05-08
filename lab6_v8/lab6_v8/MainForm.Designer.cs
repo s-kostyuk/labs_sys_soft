@@ -53,7 +53,11 @@
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.Size = new System.Drawing.Size(546, 190);
             this.dataGridViewBooks.TabIndex = 0;
-            this.dataGridViewBooks.DataSource = this.m_controller.BooksBinding;
+			this.dataGridViewBooks.ColumnCount = 4;
+			this.dataGridViewBooks.Columns[0].Name = "Author";
+			this.dataGridViewBooks.Columns[1].Name = "Title";
+			this.dataGridViewBooks.Columns[2].Name = "Publisher";
+			this.dataGridViewBooks.Columns[3].Name = "Year";
             // 
             // splitContainerBooksMenu
             // 
