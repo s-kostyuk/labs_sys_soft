@@ -54,6 +54,51 @@ namespace lab6_v8
 
         /*-------------------------------------------------------------------*/
 
+        public IList<string> AuthorNames
+        {
+            get {
+                return (from i in this.Authors
+                       select i.Name).ToList<string>();
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public BindingSource AuthorNamesBinding
+        {
+            get
+            {
+                BindingSource bs = new BindingSource();
+                bs.DataSource = AuthorNames;
+                return bs;
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public IList<string> PublisherNames
+        {
+            get
+            {
+                return (from i in this.Publishers
+                        select i.Name).ToList<string>();
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public BindingSource PublisherNamesBinding
+        {
+            get
+            {
+                BindingSource bs = new BindingSource();
+                bs.DataSource = PublisherNames;
+                return bs;
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
         public Controller()
         {
 

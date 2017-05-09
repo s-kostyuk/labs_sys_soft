@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using lab6_v8.Forms;
 
 /*****************************************************************************/
 
@@ -22,8 +23,8 @@ namespace lab6_v8
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            MainForm mf = new MainForm();
-			mf.ImportBooks (controller);
+            MainForm mf = new MainForm(controller);
+			mf.ImportBooks ();
             Application.Run(mf);
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace lab6_v8
+﻿namespace lab6_v8.Forms
 {
     partial class MainForm
     {
@@ -36,10 +36,10 @@
             this.buttonRemoveBook = new System.Windows.Forms.Button();
             this.buttonAuthorsMenu = new System.Windows.Forms.Button();
             this.buttonPublishersMenu = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumnAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnPublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBooksMenu)).BeginInit();
             this.splitContainerBooksMenu.Panel1.SuspendLayout();
@@ -53,10 +53,10 @@
             this.dataGridViewBooks.AllowUserToAddRows = false;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnAuthor,
-            this.dataGridViewTextBoxColumnTitle,
-            this.dataGridViewTextBoxColumnPublisher,
-            this.dataGridViewTextBoxColumnYear});
+            this.Author,
+            this.Title,
+            this.Publisher,
+            this.Year});
             this.dataGridViewBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewBooks.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBooks.MultiSelect = false;
@@ -107,6 +107,7 @@
             this.buttonAddBook.TabIndex = 0;
             this.buttonAddBook.Text = "Add Book";
             this.buttonAddBook.UseVisualStyleBackColor = true;
+            this.buttonAddBook.Click += new System.EventHandler(this.buttonAddBook_Click);
             // 
             // buttonModifyBook
             // 
@@ -116,6 +117,7 @@
             this.buttonModifyBook.TabIndex = 1;
             this.buttonModifyBook.Text = "Modify Book";
             this.buttonModifyBook.UseVisualStyleBackColor = true;
+            this.buttonModifyBook.Click += new System.EventHandler(this.buttonModifyBook_Click);
             // 
             // buttonRemoveBook
             // 
@@ -125,6 +127,7 @@
             this.buttonRemoveBook.TabIndex = 2;
             this.buttonRemoveBook.Text = "Remove Book";
             this.buttonRemoveBook.UseVisualStyleBackColor = true;
+            this.buttonRemoveBook.Click += new System.EventHandler(this.buttonRemoveBook_Click);
             // 
             // buttonAuthorsMenu
             // 
@@ -144,29 +147,29 @@
             this.buttonPublishersMenu.Text = "Publishers Menu";
             this.buttonPublishersMenu.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumnAuthor
+            // Author
             // 
-            this.dataGridViewTextBoxColumnAuthor.HeaderText = "Author";
-            this.dataGridViewTextBoxColumnAuthor.Name = "dataGridViewTextBoxColumnAuthor";
-            this.dataGridViewTextBoxColumnAuthor.ReadOnly = true;
+            this.Author.HeaderText = "Author";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumnTitle
+            // Title
             // 
-            this.dataGridViewTextBoxColumnTitle.HeaderText = "Title";
-            this.dataGridViewTextBoxColumnTitle.Name = "dataGridViewTextBoxColumnTitle";
-            this.dataGridViewTextBoxColumnTitle.ReadOnly = true;
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumnPublisher
+            // Publisher
             // 
-            this.dataGridViewTextBoxColumnPublisher.HeaderText = "Publisher";
-            this.dataGridViewTextBoxColumnPublisher.Name = "dataGridViewTextBoxColumnPublisher";
-            this.dataGridViewTextBoxColumnPublisher.ReadOnly = true;
+            this.Publisher.HeaderText = "Publisher";
+            this.Publisher.Name = "Publisher";
+            this.Publisher.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumnYear
+            // Year
             // 
-            this.dataGridViewTextBoxColumnYear.HeaderText = "Year";
-            this.dataGridViewTextBoxColumnYear.Name = "dataGridViewTextBoxColumnYear";
-            this.dataGridViewTextBoxColumnYear.ReadOnly = true;
+            this.Year.HeaderText = "Year";
+            this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -196,10 +199,10 @@
         private System.Windows.Forms.Button buttonRemoveBook;
         private System.Windows.Forms.Button buttonAuthorsMenu;
         private System.Windows.Forms.Button buttonPublishersMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnAuthor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnPublisher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnYear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
     }
 }
 
