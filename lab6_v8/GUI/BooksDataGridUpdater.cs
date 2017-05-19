@@ -32,6 +32,19 @@ namespace GUI
 
         /*-------------------------------------------------------------------*/
 
+        private static object[] BookToRowSource(int index, Book book)
+        {
+            return new object[] {
+                          index // book position in Collection
+                        , book.Author.Name
+                        , book.Title
+                        , book.Publisher.Name
+                        , book.Year
+                    };
+        }
+
+        /*-------------------------------------------------------------------*/
+
         public void UpdateDGV()
         {
             dgv.Rows.Clear();
@@ -41,15 +54,10 @@ namespace GUI
             foreach (Book book in binding) {
                 dgv.Rows.Add
                     (
-                    new object[] {
-                          i++ // book position on Collection
-                        , book.Author.Name
-                        , book.Title
-                        , book.Publisher.Name
-                        , book.Year
-                    }
+                    BookToRowSource(i++, book)
                     );
             }
+
         }
 
         /*-------------------------------------------------------------------*/
