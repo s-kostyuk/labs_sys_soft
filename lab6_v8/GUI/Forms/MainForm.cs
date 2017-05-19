@@ -92,17 +92,10 @@ namespace GUI.Forms
         {
             DialogResult result = new EditBookDialog(repo, GetBookIndex()).ShowDialog();
 
-            if (result != DialogResult.OK)
+            if (result == DialogResult.OK)
             {
-
-
-                //book.Title = "CHANGED";
-
                 this.repo.Books.ResetBindings(false);
             }
-            
-            
-            
         }
     }
 }

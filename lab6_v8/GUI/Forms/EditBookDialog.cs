@@ -32,12 +32,15 @@ namespace GUI.Forms
             this.comboBoxPublisher.DataSource = repo.Publishers;
             this.comboBoxPublisher.DisplayMember = "Name";
 
-            if (book_index >= 0)
-            {
-                Book curr_book = (Book)repo.Books[book_index];
-                //this.comboBoxAuthor.SelectedValue = curr_book.Author;
+            if (book_index < 0) {
+                this.curr_book = new Book();
+            }
+
+            else {
+                this.curr_book = (Book)repo.Books[book_index];
+                this.comboBoxAuthor.SelectedItem = curr_book.Author;
                 this.textBoxTitle.Text = curr_book.Title;
-                //this.comboBoxPublisher.SelectedValue = curr_book.Publisher;
+                this.comboBoxPublisher.SelectedItem = curr_book.Publisher;
                 this.numericUpDownYear.Value = curr_book.Year;
             }
         }
@@ -46,6 +49,31 @@ namespace GUI.Forms
 
         private BindingRepoWrapper repo;
         private int book_index;
+        private Book curr_book;
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            this.curr_book.Author = (Author)this.comboBoxAuthor.SelectedItem;
+            this.curr_book.Title = this.textBoxTitle.Text;
+            this.curr_book.Publisher = (Publisher)this.comboBoxPublisher.SelectedItem;
+            this.curr_book.Year = (short)this.numericUpDownYear.Value;
+            
+            if (book_index < 0)
+            {
+                repo.Books.Add(this.curr_book);
+            }
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
 
         /*-------------------------------------------------------------------*/
     }
