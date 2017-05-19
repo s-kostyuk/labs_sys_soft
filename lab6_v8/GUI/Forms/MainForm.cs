@@ -26,46 +26,13 @@ namespace GUI.Forms
 
             repo = wrapper;
 
-            sample = GetSampleBook().GetEnumerator();
-
-            // fill test data
-            this.repo.Authors.Add(ford);
-            this.repo.Authors.Add(munroe);
-            this.repo.Authors.Add(donavan_kernigan);
-            this.repo.Authors.Add(rockchild);
-            this.repo.Authors.Add(evans);
-
-            this.repo.Publishers.Add(createSpace);
-            this.repo.Publishers.Add(hmh);
-            this.repo.Publishers.Add(aw);
-
-            this.repo.Books.Add(new Book(ford, "My Life and Work", createSpace, 2013));
+            TestDataFiller tf = new TestDataFiller();
+            tf.FillTestData(repo);
         }
 
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
         
-        private Author ford = new Author("Henry Ford");
-        private Author munroe = new Author("Randall Munroe");
-        private Author donavan_kernigan = new Author("Alan A. A. Donovan, Brian W. Kernighan");
-        private Author rockchild = new Author("Marc J. Rochkind");
-        private Author evans = new Author("Eric Evans");
-
-        private Publisher createSpace = new Publisher("CreateSpace Independent Publishing Platform");
-        private Publisher hmh = new Publisher("Houghton Mifflin Harcourt");
-        private Publisher aw = new Publisher("Addison-Wesley Professional");
-
-        private IEnumerator<Book> sample;
-
-        public IEnumerable<Book> GetSampleBook()
-        {
-            yield return new Book(munroe, "What If?: Serious Scientific Answers to Absurd Hypothetical Questions", hmh, 2014);
-            yield return new Book(donavan_kernigan, "The Go Programming Language", aw, 2015);
-            yield return new Book(rockchild, "Advanced UNIX Programming", aw, 2004);
-            yield return new Book(evans, "Domain-Driven Design: Tackling Complexity in the Heart of Software", aw, 2003);
-            yield break;
-        }
-
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
             DialogResult result = new EditBookDialog(repo, -1).ShowDialog();

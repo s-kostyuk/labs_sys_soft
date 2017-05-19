@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDataFiller.cs" />
     <EmbeddedResource Include="Forms\EditBookDialog.resx">
       <DependentUpon>EditBookDialog.cs</DependentUpon>
     </EmbeddedResource>
