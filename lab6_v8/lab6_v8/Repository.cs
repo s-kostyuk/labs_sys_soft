@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace lab6_v8
 {
-    class Repository
+    public class Repository
     {
         /*-------------------------------------------------------------------*/
 

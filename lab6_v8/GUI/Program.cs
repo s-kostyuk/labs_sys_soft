@@ -1,4 +1,6 @@
-﻿using System;
+﻿using lab6_v8;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +16,14 @@ namespace GUI
         [STAThread]
         static void Main()
         {
+            BindingRepoWrapper wrapper =
+                new BindingRepoWrapper(
+                    new Repository()
+                );
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run();
+            Application.Run(new Forms.MainForm(wrapper));
         }
     }
 }

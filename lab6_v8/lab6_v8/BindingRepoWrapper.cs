@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace lab6_v8
 {
-    class BindingRepoWrapper
+    public class BindingRepoWrapper
     {
         
         /*-------------------------------------------------------------------*/
@@ -34,7 +34,7 @@ namespace lab6_v8
 
         /*-------------------------------------------------------------------*/
 
-        BindingRepoWrapper(Repository source_repo)
+        public BindingRepoWrapper(Repository source_repo)
         {
             this.m_source_repo = source_repo;
 
