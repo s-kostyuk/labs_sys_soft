@@ -79,13 +79,30 @@ namespace GUI.Forms
             
         }
 
+        private int GetBookIndex()
+        {
+            var row = this.dataGridViewBooks.CurrentRow;
+
+            int id = (int)row.Cells["ID"].Value;
+
+            return id;
+        }
+
         private void buttonModifyBook_Click(object sender, EventArgs e)
         {
-            Book book = (Book)this.repo.Books[0];
+            DialogResult result = new EditBookDialog(repo, GetBookIndex()).ShowDialog();
 
-            book.Title = "CHANGED";
+            if (result != DialogResult.OK)
+            {
 
-            this.repo.Books.ResetBindings(false);
+
+                //book.Title = "CHANGED";
+
+                this.repo.Books.ResetBindings(false);
+            }
+            
+            
+            
         }
     }
 }

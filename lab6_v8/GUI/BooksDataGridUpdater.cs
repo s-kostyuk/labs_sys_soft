@@ -36,11 +36,13 @@ namespace GUI
         {
             dgv.Rows.Clear();
 
+            int i = 0;
+
             foreach (Book book in binding) {
                 dgv.Rows.Add
                     (
                     new object[] {
-                          book
+                          i++ // book position on Collection
                         , book.Author.Name
                         , book.Title
                         , book.Publisher.Name
