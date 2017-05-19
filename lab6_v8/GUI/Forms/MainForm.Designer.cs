@@ -129,6 +129,7 @@
             this.buttonRemoveBook.TabIndex = 2;
             this.buttonRemoveBook.Text = "Remove Book";
             this.buttonRemoveBook.UseVisualStyleBackColor = true;
+            this.buttonRemoveBook.Click += new System.EventHandler(this.buttonRemoveBook_Click);
             // 
             // buttonAuthorsMenu
             // 

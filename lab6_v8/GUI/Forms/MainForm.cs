@@ -68,24 +68,24 @@ namespace GUI.Forms
 
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
-            bool has_new = sample.MoveNext();
-
-            if (has_new)
-            {
-                this.repo.Books.Add(sample.Current);
-            }
-            
-            
-            
+            DialogResult result = new EditBookDialog(repo, -1).ShowDialog();
         }
 
         private int GetBookIndex()
         {
             var row = this.dataGridViewBooks.CurrentRow;
 
-            int id = (int)row.Cells["ID"].Value;
+            if (row == null)
+            {
+                return -1; // No rows available, no rows selected, no books selected
+            }
 
-            return id;
+            else
+            {
+                int id = (int)row.Cells["ID"].Value;
+
+                return id;
+            }
         }
 
         private void buttonModifyBook_Click(object sender, EventArgs e)
@@ -96,6 +96,13 @@ namespace GUI.Forms
             {
                 this.repo.Books.ResetBindings(false);
             }
+        }
+
+        private void buttonRemoveBook_Click(object sender, EventArgs e)
+        {
+            int index = GetBookIndex();
+
+            this.repo.Books.RemoveAt(index);
         }
     }
 }
