@@ -20,10 +20,9 @@ namespace lab6_v8.gui.Forms
                 dataGridViewBooks, wrapper.Books
                 );
 
-            repo = wrapper;
+            updater.UpdateDGV();
 
-            TestDataFiller tf = new TestDataFiller();
-            tf.FillTestData(repo);
+            repo = wrapper;
 
             this.lib_stats_form = new LibraryStatsForm(
                 new StatsViewProvider(repo)

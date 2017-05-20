@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Newtonsoft.Json;
 
 /*****************************************************************************/
 
@@ -36,6 +37,42 @@ namespace lab6_v8.library
             this.m_bs_authors.DataSource = m_source_repo.Authors;
             this.m_bs_publishers.DataSource = m_source_repo.Publishers;
             this.m_bs_books.DataSource = m_source_repo.Books;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void Rebind()
+        {
+            this.m_bs_authors.DataSource = m_source_repo.Authors;
+            this.m_bs_publishers.DataSource = m_source_repo.Publishers;
+            this.m_bs_books.DataSource = m_source_repo.Books;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(
+                m_source_repo, 
+                new JsonSerializerSettings {
+                    PreserveReferencesHandling = PreserveReferencesHandling.All
+                });
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public void Deserialize(string source)
+        {
+            var repo_restored 
+                = JsonConvert.DeserializeObject<Repository>(
+                    source, 
+                    new JsonSerializerSettings {
+                        PreserveReferencesHandling = PreserveReferencesHandling.All
+                    });
+
+            m_source_repo = repo_restored;
+
+            Rebind();
         }
 
         /*-------------------------------------------------------------------*/
