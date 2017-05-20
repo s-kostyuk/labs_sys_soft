@@ -41,6 +41,7 @@
             this.buttonRemoveBook = new System.Windows.Forms.Button();
             this.buttonAuthorsMenu = new System.Windows.Forms.Button();
             this.buttonPublishersMenu = new System.Windows.Forms.Button();
+            this.buttonStats = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBooksMenu)).BeginInit();
             this.splitContainerBooksMenu.Panel1.SuspendLayout();
@@ -67,7 +68,7 @@
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(550, 217);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(437, 212);
             this.dataGridViewBooks.TabIndex = 0;
             // 
             // ID
@@ -116,8 +117,8 @@
             // splitContainerBooksMenu.Panel2
             // 
             this.splitContainerBooksMenu.Panel2.Controls.Add(this.flowLayoutPanelButtons);
-            this.splitContainerBooksMenu.Size = new System.Drawing.Size(550, 261);
-            this.splitContainerBooksMenu.SplitterDistance = 217;
+            this.splitContainerBooksMenu.Size = new System.Drawing.Size(437, 287);
+            this.splitContainerBooksMenu.SplitterDistance = 212;
             this.splitContainerBooksMenu.TabIndex = 2;
             // 
             // flowLayoutPanelButtons
@@ -127,11 +128,12 @@
             this.flowLayoutPanelButtons.Controls.Add(this.buttonRemoveBook);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonAuthorsMenu);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonPublishersMenu);
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonStats);
             this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelButtons.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
             this.flowLayoutPanelButtons.Padding = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(550, 40);
+            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(437, 71);
             this.flowLayoutPanelButtons.TabIndex = 0;
             // 
             // buttonAddBook
@@ -176,7 +178,7 @@
             // 
             // buttonPublishersMenu
             // 
-            this.buttonPublishersMenu.Location = new System.Drawing.Point(432, 8);
+            this.buttonPublishersMenu.Location = new System.Drawing.Point(8, 37);
             this.buttonPublishersMenu.Name = "buttonPublishersMenu";
             this.buttonPublishersMenu.Size = new System.Drawing.Size(100, 23);
             this.buttonPublishersMenu.TabIndex = 4;
@@ -184,11 +186,21 @@
             this.buttonPublishersMenu.UseVisualStyleBackColor = true;
             this.buttonPublishersMenu.Click += new System.EventHandler(this.buttonPublishersMenu_Click);
             // 
+            // buttonStats
+            // 
+            this.buttonStats.Location = new System.Drawing.Point(114, 37);
+            this.buttonStats.Name = "buttonStats";
+            this.buttonStats.Size = new System.Drawing.Size(100, 23);
+            this.buttonStats.TabIndex = 5;
+            this.buttonStats.Text = "Statistics";
+            this.buttonStats.UseVisualStyleBackColor = true;
+            this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 261);
+            this.ClientSize = new System.Drawing.Size(437, 287);
             this.Controls.Add(this.splitContainerBooksMenu);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -217,5 +229,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.Button buttonStats;
     }
 }
