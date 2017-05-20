@@ -1,12 +1,12 @@
-﻿using lab6_v8;
-using lab6_v8.Model;
+﻿using lab6_v8.library;
+using lab6_v8.library.Model;
 
 using System;
 using System.Windows.Forms;
 
 /*****************************************************************************/
 
-namespace GUI.Forms
+namespace lab6_v8.gui.Forms
 {
     public partial class EditBookDialog : Form
     {

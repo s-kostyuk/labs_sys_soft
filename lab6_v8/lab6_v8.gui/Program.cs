@@ -1,11 +1,11 @@
-﻿using lab6_v8;
+﻿using lab6_v8.library;
 
 using System;
 using System.Windows.Forms;
 
 /*****************************************************************************/
 
-namespace GUI
+namespace lab6_v8.gui
 {
     static class Program
     {

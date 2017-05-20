@@ -7,8 +7,8 @@
     <ProjectGuid>{79BE55C7-6022-4D16-896F-CC7008195759}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GUI</RootNamespace>
-    <AssemblyName>GUI</AssemblyName>
+    <RootNamespace>lab6_v8.gui</RootNamespace>
+    <AssemblyName>lab6_v8.gui</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -95,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -110,9 +111,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\lab6_v8\lab6_v8.csproj">
+    <ProjectReference Include="..\lab6_v8.library\lab6_v8.library.csproj">
       <Project>{9af21892-0476-45fa-b419-710df9693c00}</Project>
-      <Name>lab6_v8</Name>
+      <Name>lab6_v8.library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

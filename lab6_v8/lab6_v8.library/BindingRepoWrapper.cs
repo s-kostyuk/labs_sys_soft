@@ -2,7 +2,7 @@
 
 /*****************************************************************************/
 
-namespace lab6_v8
+namespace lab6_v8.library
 {
     public class BindingRepoWrapper
     {

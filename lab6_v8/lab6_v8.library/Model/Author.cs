@@ -1,26 +1,24 @@
 ﻿/*****************************************************************************/
 
-namespace lab6_v8.Model
+namespace lab6_v8.library.Model
 {
-    public class Publisher
+    public class Author
     {
-
         /*-------------------------------------------------------------------*/
 
         public string Name { get; set; }
 
         /*-------------------------------------------------------------------*/
 
-        public Publisher() { }
+        public Author() {}
 
         /*-------------------------------------------------------------------*/
-        
-        public Publisher(string name) {
+
+        public Author(string name) {
 			this.Name = name;
 		}
 
         /*-------------------------------------------------------------------*/
-
     }
 }
 

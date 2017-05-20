@@ -1,10 +1,10 @@
-﻿using lab6_v8.Model;
+﻿using lab6_v8.library.Model;
 
 using System.Collections.Generic;
 
 /*****************************************************************************/
 
-namespace lab6_v8
+namespace lab6_v8.library
 {
     public class Repository
     {

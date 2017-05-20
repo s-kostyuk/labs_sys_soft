@@ -1,11 +1,11 @@
-﻿using lab6_v8;
+﻿using lab6_v8.library;
 
 using System;
 using System.Windows.Forms;
 
 /*****************************************************************************/
 
-namespace GUI.Forms
+namespace lab6_v8.gui.Forms
 {
     public partial class MainForm : Form
     {
@@ -25,8 +25,9 @@ namespace GUI.Forms
             TestDataFiller tf = new TestDataFiller();
             tf.FillTestData(repo);
 
-            provider = new StatsViewProvider(repo);
-
+            this.lib_stats_form = new LibraryStatsForm(
+                new StatsViewProvider(repo)
+                );
         }
         
         /*-------------------------------------------------------------------*/
@@ -34,7 +35,6 @@ namespace GUI.Forms
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
         private LibraryStatsForm lib_stats_form;
-        private StatsViewProvider provider;
 
         /*-------------------------------------------------------------------*/
 
@@ -109,15 +109,7 @@ namespace GUI.Forms
 
         private void buttonStats_Click(object sender, EventArgs e)
         {
-            if (this.lib_stats_form == null || this.lib_stats_form.IsDisposed)
-            {
-                this.lib_stats_form = new LibraryStatsForm(provider);
-                this.lib_stats_form.Show();
-            }
-            else
-            {
-                this.lib_stats_form.BringToFront();
-            }
+            this.lib_stats_form.Show();
         }
 
         /*-------------------------------------------------------------------*/

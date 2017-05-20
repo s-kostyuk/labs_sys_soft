@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 /*****************************************************************************/
 
-namespace GUI.Forms
+namespace lab6_v8.gui.Forms
 {
     public partial class LibraryStatsForm : Form
     {

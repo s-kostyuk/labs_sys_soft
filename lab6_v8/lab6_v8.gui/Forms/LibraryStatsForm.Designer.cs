@@ -1,4 +1,4 @@
-﻿namespace GUI.Forms
+﻿namespace lab6_v8.gui.Forms
 {
     partial class LibraryStatsForm
     {

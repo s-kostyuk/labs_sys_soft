@@ -1,12 +1,12 @@
-﻿using lab6_v8;
-using lab6_v8.Model;
+﻿using lab6_v8.library;
+using lab6_v8.library.Model;
 
 using System.Collections;
 using System.Linq;
 
 /*****************************************************************************/
 
-namespace GUI
+namespace lab6_v8.gui
 {
     public class StatsViewProvider
     {

@@ -1,9 +1,9 @@
-﻿using lab6_v8.Model;
+﻿using lab6_v8.library.Model;
 using System.Windows.Forms;
 
 /*****************************************************************************/
 
-namespace GUI
+namespace lab6_v8.gui
 {
     class BooksDataGridUpdater
     {
