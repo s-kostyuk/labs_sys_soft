@@ -30,12 +30,17 @@ namespace GUI.Forms
 
             TestDataFiller tf = new TestDataFiller();
             tf.FillTestData(repo);
+
+            this.lib_stats_form = new LibraryStatsForm(
+                new StatsViewProvider(repo)
+                );
         }
         
         /*-------------------------------------------------------------------*/
 
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
+        private LibraryStatsForm lib_stats_form;
 
         /*-------------------------------------------------------------------*/
 
@@ -104,6 +109,13 @@ namespace GUI.Forms
             dialog.Text = "Edit Publishers";
 
             DialogResult result = dialog.ShowDialog();
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonStats_Click(object sender, EventArgs e)
+        {
+            this.lib_stats_form.Show();
         }
 
         /*-------------------------------------------------------------------*/
