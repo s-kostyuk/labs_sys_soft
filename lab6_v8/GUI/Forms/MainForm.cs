@@ -85,5 +85,19 @@ namespace GUI.Forms
         }
 
         /*-------------------------------------------------------------------*/
+
+        private void buttonAuthorsMenu_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonPublishersMenu_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /*-------------------------------------------------------------------*/
     }
 }

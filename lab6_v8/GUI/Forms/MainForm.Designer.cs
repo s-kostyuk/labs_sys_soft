@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainerBooksMenu = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddBook = new System.Windows.Forms.Button();
@@ -36,11 +41,6 @@
             this.buttonRemoveBook = new System.Windows.Forms.Button();
             this.buttonAuthorsMenu = new System.Windows.Forms.Button();
             this.buttonPublishersMenu = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBooksMenu)).BeginInit();
             this.splitContainerBooksMenu.Panel1.SuspendLayout();
@@ -52,6 +52,8 @@
             // dataGridViewBooks
             // 
             this.dataGridViewBooks.AllowUserToAddRows = false;
+            this.dataGridViewBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -67,6 +69,37 @@
             this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBooks.Size = new System.Drawing.Size(550, 217);
             this.dataGridViewBooks.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // Author
+            // 
+            this.Author.HeaderText = "Author";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // Publisher
+            // 
+            this.Publisher.HeaderText = "Publisher";
+            this.Publisher.Name = "Publisher";
+            this.Publisher.ReadOnly = true;
+            // 
+            // Year
+            // 
+            this.Year.HeaderText = "Year";
+            this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
             // 
             // splitContainerBooksMenu
             // 
@@ -139,6 +172,7 @@
             this.buttonAuthorsMenu.TabIndex = 3;
             this.buttonAuthorsMenu.Text = "Authors Menu";
             this.buttonAuthorsMenu.UseVisualStyleBackColor = true;
+            this.buttonAuthorsMenu.Click += new System.EventHandler(this.buttonAuthorsMenu_Click);
             // 
             // buttonPublishersMenu
             // 
@@ -148,37 +182,7 @@
             this.buttonPublishersMenu.TabIndex = 4;
             this.buttonPublishersMenu.Text = "Publishers Menu";
             this.buttonPublishersMenu.UseVisualStyleBackColor = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // Author
-            // 
-            this.Author.HeaderText = "Author";
-            this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            // 
-            // Publisher
-            // 
-            this.Publisher.HeaderText = "Publisher";
-            this.Publisher.Name = "Publisher";
-            this.Publisher.ReadOnly = true;
-            // 
-            // Year
-            // 
-            this.Year.HeaderText = "Year";
-            this.Year.Name = "Year";
-            this.Year.ReadOnly = true;
+            this.buttonPublishersMenu.Click += new System.EventHandler(this.buttonPublishersMenu_Click);
             // 
             // MainForm
             // 
