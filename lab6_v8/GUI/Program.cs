@@ -1,10 +1,9 @@
 ﻿using lab6_v8;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+/*****************************************************************************/
 
 namespace GUI
 {
@@ -27,3 +26,5 @@ namespace GUI
         }
     }
 }
+
+/*****************************************************************************/

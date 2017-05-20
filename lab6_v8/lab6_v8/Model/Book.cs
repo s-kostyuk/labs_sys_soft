@@ -1,6 +1,4 @@
-﻿using System;
-
-/*****************************************************************************/
+﻿/*****************************************************************************/
 
 namespace lab6_v8.Model
 {
@@ -24,7 +22,7 @@ namespace lab6_v8.Model
         
 		/*-------------------------------------------------------------------*/
 
-        public Int16 Year { get; set; }
+        public short Year { get; set; }
 
 		/*-------------------------------------------------------------------*/
 
@@ -32,7 +30,7 @@ namespace lab6_v8.Model
 
 		/*-------------------------------------------------------------------*/
 
-		public Book(Author author, string title, Publisher publisher, Int16 year) {
+		public Book(Author author, string title, Publisher publisher, short year) {
 
 			this.Author = author;
 			this.Title = title;
