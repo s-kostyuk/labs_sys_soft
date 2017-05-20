@@ -25,9 +25,8 @@ namespace GUI.Forms
             TestDataFiller tf = new TestDataFiller();
             tf.FillTestData(repo);
 
-            this.lib_stats_form = new LibraryStatsForm(
-                new StatsViewProvider(repo)
-                );
+            provider = new StatsViewProvider(repo);
+
         }
         
         /*-------------------------------------------------------------------*/
@@ -35,6 +34,7 @@ namespace GUI.Forms
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
         private LibraryStatsForm lib_stats_form;
+        private StatsViewProvider provider;
 
         /*-------------------------------------------------------------------*/
 
@@ -109,7 +109,15 @@ namespace GUI.Forms
 
         private void buttonStats_Click(object sender, EventArgs e)
         {
-            this.lib_stats_form.Show();
+            if (this.lib_stats_form == null || this.lib_stats_form.IsDisposed)
+            {
+                this.lib_stats_form = new LibraryStatsForm(provider);
+                this.lib_stats_form.Show();
+            }
+            else
+            {
+                this.lib_stats_form.BringToFront();
+            }
         }
 
         /*-------------------------------------------------------------------*/
