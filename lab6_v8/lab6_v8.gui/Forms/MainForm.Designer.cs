@@ -42,6 +42,8 @@
             this.buttonAuthorsMenu = new System.Windows.Forms.Button();
             this.buttonPublishersMenu = new System.Windows.Forms.Button();
             this.buttonStats = new System.Windows.Forms.Button();
+            this.buttonOpenFile = new System.Windows.Forms.Button();
+            this.buttonSaveFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerBooksMenu)).BeginInit();
             this.splitContainerBooksMenu.Panel1.SuspendLayout();
@@ -129,6 +131,8 @@
             this.flowLayoutPanelButtons.Controls.Add(this.buttonAuthorsMenu);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonPublishersMenu);
             this.flowLayoutPanelButtons.Controls.Add(this.buttonStats);
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonOpenFile);
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonSaveFile);
             this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelButtons.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
@@ -196,6 +200,26 @@
             this.buttonStats.UseVisualStyleBackColor = true;
             this.buttonStats.Click += new System.EventHandler(this.buttonStats_Click);
             // 
+            // buttonOpenFile
+            // 
+            this.buttonOpenFile.Location = new System.Drawing.Point(220, 37);
+            this.buttonOpenFile.Name = "buttonOpenFile";
+            this.buttonOpenFile.Size = new System.Drawing.Size(100, 23);
+            this.buttonOpenFile.TabIndex = 6;
+            this.buttonOpenFile.Text = "Open File";
+            this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
+            // 
+            // buttonSaveFile
+            // 
+            this.buttonSaveFile.Location = new System.Drawing.Point(326, 37);
+            this.buttonSaveFile.Name = "buttonSaveFile";
+            this.buttonSaveFile.Size = new System.Drawing.Size(100, 23);
+            this.buttonSaveFile.TabIndex = 7;
+            this.buttonSaveFile.Text = "Save to File";
+            this.buttonSaveFile.UseVisualStyleBackColor = true;
+            this.buttonSaveFile.Click += new System.EventHandler(this.buttonSaveFile_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,5 +254,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.Button buttonStats;
+        private System.Windows.Forms.Button buttonOpenFile;
+        private System.Windows.Forms.Button buttonSaveFile;
     }
 }

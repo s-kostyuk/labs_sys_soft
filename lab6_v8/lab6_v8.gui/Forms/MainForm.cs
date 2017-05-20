@@ -2,6 +2,7 @@
 
 using System;
 using System.Windows.Forms;
+using System.IO;
 
 /*****************************************************************************/
 
@@ -27,6 +28,12 @@ namespace lab6_v8.gui.Forms
             this.lib_stats_form = new LibraryStatsForm(
                 new StatsViewProvider(repo)
                 );
+
+            saveDialog = new SaveFileDialog();
+            SetFilterAndExtension(saveDialog);
+
+            openDialog = new OpenFileDialog();
+            SetFilterAndExtension(openDialog);
         }
         
         /*-------------------------------------------------------------------*/
@@ -34,6 +41,8 @@ namespace lab6_v8.gui.Forms
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
         private LibraryStatsForm lib_stats_form;
+        private SaveFileDialog saveDialog;
+        private OpenFileDialog openDialog;
 
         /*-------------------------------------------------------------------*/
 
@@ -109,6 +118,53 @@ namespace lab6_v8.gui.Forms
         private void buttonStats_Click(object sender, EventArgs e)
         {
             this.lib_stats_form.Show();
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void SetFilterAndExtension(FileDialog dialog)
+        {
+            dialog.Filter = "Json data (*.json)|*.json";
+            dialog.AddExtension = true;
+            dialog.DefaultExt = "json";
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonOpenFile_Click(object sender, EventArgs e)
+        {
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = openDialog.FileName;
+
+                StreamReader reader = new StreamReader(
+                    File.Open(path, FileMode.Open)
+                    );
+
+                string source_data = reader.ReadToEnd();
+
+                this.repo.Deserialize(source_data);
+
+                reader.Dispose();
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void buttonSaveFile_Click(object sender, EventArgs e)
+        {
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = saveDialog.FileName;
+
+                StreamWriter writer = new StreamWriter(
+                    File.Open(path, FileMode.OpenOrCreate)
+                    );
+
+                writer.Write(repo.Serialize());
+
+                writer.Dispose();
+            }
         }
 
         /*-------------------------------------------------------------------*/
