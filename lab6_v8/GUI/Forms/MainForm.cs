@@ -31,7 +31,7 @@ namespace GUI.Forms
             TestDataFiller tf = new TestDataFiller();
             tf.FillTestData(repo);
         }
-
+        
         /*-------------------------------------------------------------------*/
 
         private BooksDataGridUpdater updater;
@@ -88,14 +88,22 @@ namespace GUI.Forms
 
         private void buttonAuthorsMenu_Click(object sender, EventArgs e)
         {
-            
+            EditCollectionDialog dialog = new EditCollectionDialog(this.repo.Authors);
+
+            dialog.Text = "Edit Authors";
+
+            DialogResult result = dialog.ShowDialog();
         }
 
         /*-------------------------------------------------------------------*/
 
         private void buttonPublishersMenu_Click(object sender, EventArgs e)
         {
-            
+            EditCollectionDialog dialog = new EditCollectionDialog(this.repo.Publishers);
+
+            dialog.Text = "Edit Publishers";
+
+            DialogResult result = dialog.ShowDialog();
         }
 
         /*-------------------------------------------------------------------*/

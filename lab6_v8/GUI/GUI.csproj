@@ -53,6 +53,12 @@
     <Compile Include="Forms\EditBookDialog.Designer.cs">
       <DependentUpon>EditBookDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EdiCollectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EdiCollectionDialog.Designer.cs">
+      <DependentUpon>EdiCollectionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="TestDataFiller.cs" />
     <EmbeddedResource Include="Forms\EditBookDialog.resx">
       <DependentUpon>EditBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EdiCollectionDialog.resx">
+      <DependentUpon>EdiCollectionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
