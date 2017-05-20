@@ -15,6 +15,8 @@ namespace GUI.Forms
 {
     public partial class MainForm : Form
     {
+        /*-------------------------------------------------------------------*/
+
         public MainForm(BindingRepoWrapper wrapper)
         {
             InitializeComponent();
@@ -30,13 +32,19 @@ namespace GUI.Forms
             tf.FillTestData(repo);
         }
 
+        /*-------------------------------------------------------------------*/
+
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
-        
+
+        /*-------------------------------------------------------------------*/
+
         private void buttonAddBook_Click(object sender, EventArgs e)
         {
             DialogResult result = new EditBookDialog(repo, -1).ShowDialog();
         }
+
+        /*-------------------------------------------------------------------*/
 
         private int GetBookIndex()
         {
@@ -55,6 +63,8 @@ namespace GUI.Forms
             }
         }
 
+        /*-------------------------------------------------------------------*/
+
         private void buttonModifyBook_Click(object sender, EventArgs e)
         {
             DialogResult result = new EditBookDialog(repo, GetBookIndex()).ShowDialog();
@@ -65,11 +75,15 @@ namespace GUI.Forms
             }
         }
 
+        /*-------------------------------------------------------------------*/
+
         private void buttonRemoveBook_Click(object sender, EventArgs e)
         {
             int index = GetBookIndex();
 
             this.repo.Books.RemoveAt(index);
         }
+
+        /*-------------------------------------------------------------------*/
     }
 }
