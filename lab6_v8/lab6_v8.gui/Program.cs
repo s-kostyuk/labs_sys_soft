@@ -15,25 +15,15 @@ namespace lab6_v8.gui
         [STAThread]
         static void Main()
         {
-            Repository repo = new Repository();
-
-            BindingRepoWrapper old_wrapper =
-                new BindingRepoWrapper(
-                    repo
-                );
-
             TestDataFiller tf = new TestDataFiller();
-            tf.FillTestData(old_wrapper);
 
-            string repo_string = old_wrapper.Serialize();
-            
-            BindingRepoWrapper wrapper =
+			BindingRepoWrapper wrapper =
                 new BindingRepoWrapper(
                     new Repository()
                 );
 
-            wrapper.Deserialize(repo_string);
-            
+			tf.FillTestData(wrapper);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Forms.MainForm(wrapper));

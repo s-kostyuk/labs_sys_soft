@@ -17,17 +17,14 @@ namespace lab6_v8.gui.Forms
             InitializeComponent();
 
             updater = new BooksDataGridUpdater
-                (
-                dataGridViewBooks, wrapper.Books
-                );
+            (
+            dataGridViewBooks, wrapper.Books
+            );
 
             updater.UpdateDGV();
 
             repo = wrapper;
-
-            this.lib_stats_form = new LibraryStatsForm(
-                new StatsViewProvider(repo)
-                );
+            provider = new StatsViewProvider(repo);
 
             saveDialog = new SaveFileDialog();
             SetFilterAndExtension(saveDialog);
@@ -35,12 +32,13 @@ namespace lab6_v8.gui.Forms
             openDialog = new OpenFileDialog();
             SetFilterAndExtension(openDialog);
         }
-        
+
         /*-------------------------------------------------------------------*/
 
         private BooksDataGridUpdater updater;
         private BindingRepoWrapper repo;
         private LibraryStatsForm lib_stats_form;
+        private StatsViewProvider provider;
         private SaveFileDialog saveDialog;
         private OpenFileDialog openDialog;
 
@@ -117,7 +115,15 @@ namespace lab6_v8.gui.Forms
 
         private void buttonStats_Click(object sender, EventArgs e)
         {
-            this.lib_stats_form.Show();
+            if (this.lib_stats_form == null || this.lib_stats_form.IsDisposed)
+            {
+                this.lib_stats_form = new LibraryStatsForm(provider);
+                this.lib_stats_form.Show();
+            }
+            else
+            {
+                this.lib_stats_form.BringToFront();
+            }
         }
 
         /*-------------------------------------------------------------------*/
