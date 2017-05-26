@@ -4,30 +4,39 @@
 
 namespace lab8_v5.Model
 {
-    public class Author : BasicEntity
+    public class BasicEntity
     {
-        
         /*-------------------------------------------------------------------*/
 
-        public string Name { get; set; }
-
-        /*-------------------------------------------------------------------*/
-
-        protected Author() { }
+        public Guid Id { get; private set; }
 
         /*-------------------------------------------------------------------*/
 
-        public Author(Guid id)
-            : base(id)
-        {}
+        protected BasicEntity() { }
 
         /*-------------------------------------------------------------------*/
 
-        public Author(Guid id, string name)
-            : this(id)
+        public BasicEntity(Guid id)
         {
-			this.Name = name;
-		}
+            this.Id = id;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public override bool Equals(object obj)
+        {
+            return
+                obj is BasicEntity
+                &&
+                this.Id == (obj as BasicEntity).Id;
+        }
 
         /*-------------------------------------------------------------------*/
     }

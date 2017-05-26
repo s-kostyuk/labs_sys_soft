@@ -4,12 +4,8 @@
 
 namespace lab8_v5.Model
 {
-    public class Publisher
+    public class Publisher : BasicEntity
     {
-
-        /*-------------------------------------------------------------------*/
-
-        public Guid Id { get; private set; }
 
         /*-------------------------------------------------------------------*/
 
@@ -17,9 +13,13 @@ namespace lab8_v5.Model
 
         /*-------------------------------------------------------------------*/
 
-        public Publisher(Guid id) {
-            this.Id = id;
-        }
+        protected Publisher() { }
+
+        /*-------------------------------------------------------------------*/
+
+        public Publisher(Guid id)
+            : base(id)
+        { }
 
         /*-------------------------------------------------------------------*/
         
