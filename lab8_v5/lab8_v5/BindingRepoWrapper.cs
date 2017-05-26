@@ -51,14 +51,40 @@ namespace lab8_v5
 
         public void SaveToDB()
         {
-            
+            using (var context = new LibraryDbContext()) {
+                context.Authors.AddRange(this.m_source_repo.Authors);
+                context.Publishers.AddRange(this.m_source_repo.Publishers);
+                context.Books.AddRange(this.m_source_repo.Books);
+
+                context.SaveChanges();
+            }
         }
 
         /*-------------------------------------------------------------------*/
 
         public void LoadFromDB()
         {
-            
+            using (var context = new LibraryDbContext())
+            {
+                this.Books.Clear();
+                this.Authors.Clear();
+                this.Publishers.Clear();
+                
+                foreach (var item in context.Authors)
+                {
+                    this.Authors.Add(item);
+                }
+
+                foreach (var item in context.Publishers)
+                {
+                    this.Publishers.Add(item);
+                }
+
+                foreach (var item in context.Books)
+                {
+                    this.Books.Add(item);
+                }
+            }
         }
 
         /*-------------------------------------------------------------------*/
