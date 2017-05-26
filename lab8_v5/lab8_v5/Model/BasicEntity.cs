@@ -16,5 +16,19 @@ namespace lab8_v5.Model
         {
             this.Id = id;
         }
+
+        public override bool Equals(object obj)
+        {
+            return 
+                (obj is BasicEntity)
+                &&
+                ((obj as BasicEntity).Id == this.Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
+        
     }
 }
