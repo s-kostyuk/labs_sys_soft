@@ -137,14 +137,14 @@ namespace lab8_v5.gui.Forms
 
         /*-------------------------------------------------------------------*/
 
-        private void buttonOpenFile_Click(object sender, EventArgs e)
+        private void buttonLoadFromDb_Click(object sender, EventArgs e)
         {
             repo.LoadFromDB();
         }
 
         /*-------------------------------------------------------------------*/
 
-        private void buttonSaveFile_Click(object sender, EventArgs e)
+        private void buttonSaveToDb_Click(object sender, EventArgs e)
         {
             repo.SaveToDB();
         }
