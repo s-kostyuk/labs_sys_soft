@@ -16,9 +16,9 @@
         public LibraryModel()
             : base("name=LibraryModel")
         {
-            Database.SetInitializer(
-                new DropCreateDatabaseAlways<LibraryModel>()
-            );
+            //Database.SetInitializer(
+            //    new DropCreateDatabaseAlways<LibraryModel>()
+            //);
         }
 
 

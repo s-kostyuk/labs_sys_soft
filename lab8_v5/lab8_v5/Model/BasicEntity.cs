@@ -10,6 +10,8 @@ namespace lab8_v5.Model
     {
         public Guid Id { get; private set; }
 
+        public BasicEntity() { }
+
         public BasicEntity(Guid id)
         {
             this.Id = id;
