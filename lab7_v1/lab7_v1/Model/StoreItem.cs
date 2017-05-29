@@ -18,15 +18,27 @@ namespace lab7_v1.Model
 
         /*-------------------------------------------------------------------*/
 
-        public int Cost
+        public int PurchaseCost
         {
-            get { return m_cost; }
+            get { return m_purchase_cost; }
 
-            private set
+            set
             {
-                CheckPositive.Check(value, "Product Cost", "value");
+                CheckPositive.Check(value, "Product Purchase Cost", "value");
+                m_purchase_cost = value;
+            }
+        }
 
-                m_cost = value;
+        /*-------------------------------------------------------------------*/
+
+        public int SellingCost
+        {
+            get { return m_selling_cost; }
+
+            set
+            {
+                CheckPositive.Check(value, "Product Selling Cost", "value");
+                m_selling_cost = value;
             }
         }
 
@@ -38,24 +50,25 @@ namespace lab7_v1.Model
             private set
             {
                 CheckPositive.Check(value, "PackageSize", "value");
-
                 m_package_size = value;
             }
         }
 
         /*-------------------------------------------------------------------*/
 
-        public StoreItem(Guid id, string name, int cost, int package_size)
+        public StoreItem(Guid id, string name, int purchase_cost, int selling_cost, int package_size)
             : base(id)
         {
             this.Name = name;
-            this.Cost = cost;
+            this.PurchaseCost = purchase_cost;
+            this.SellingCost = selling_cost;
             this.PackageSize = package_size;
         }
 
         /*-------------------------------------------------------------------*/
 
-        private int m_cost;
+        private int m_purchase_cost;
+        private int m_selling_cost;
         private int m_package_size;
 
         /*-------------------------------------------------------------------*/
