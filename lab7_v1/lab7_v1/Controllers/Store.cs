@@ -1,9 +1,19 @@
-﻿using System;
+﻿/*****************************************************************************/
+
+/* FIXME List:
+ Consider Change:
+ * CC4 - remove try-catch section.
+ */
+
+/*****************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using lab7_v1.Model;
 using lab7_v1.Utils;
 
 /*****************************************************************************/
@@ -75,9 +85,75 @@ namespace lab7_v1.Controllers
         public void Open() { State = StorageStates.Open; }
 
         /*-------------------------------------------------------------------*/
+        
+        public void Sell(StoreItem si, int quantity=1)
+        {
+            int order_cost = get_selling_order_price(si, quantity);
+
+            lock (this)
+            {
+                // CC4
+                try
+                {
+                    this.Storage.ShipProduct(si, quantity);
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    throw e;
+                }
+                catch (ArgumentException e)
+                {
+                    throw e;
+                }
+
+                CashBalance += order_cost;
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public void Purchase(StoreItem si, int quantity = 1)
+        {
+            int order_cost = get_purchase_order_price(si, quantity);
+
+            lock (this)
+            {
+                // CC4
+                try
+                {
+                    this.Storage.StoreProduct(si, quantity);
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    throw e;
+                }
+                catch (ArgumentException e)
+                {
+                    throw e;
+                }
+
+                CashBalance -= order_cost;
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
 
         private int m_cash_balance;
         private Storage m_storage;
+
+        /*-------------------------------------------------------------------*/
+
+        private int get_purchase_order_price(StoreItem si, int quantity)
+        {
+            return si.PurchaseCost * quantity;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private int get_selling_order_price(StoreItem si, int quantity)
+        {
+            return si.SellingCost * quantity;
+        }
 
         /*-------------------------------------------------------------------*/
     }

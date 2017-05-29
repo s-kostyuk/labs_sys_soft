@@ -5,6 +5,7 @@
  * CC1 - Raise an event on added/removed items in storage;
  * CC2 - Add a cache of used space to minimize executions of LINQ queries;
  * CC3 - Move lock() out of the Storage class.
+ */
 
 /*****************************************************************************/
 
