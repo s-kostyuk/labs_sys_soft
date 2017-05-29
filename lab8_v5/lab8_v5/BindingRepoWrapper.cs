@@ -52,6 +52,8 @@ namespace lab8_v5
         public void SaveToDB()
         {
             using (var context = new LibraryDbContext()) {
+                context.Database.Delete();
+
                 context.Authors.AddRange(this.m_source_repo.Authors);
                 context.Publishers.AddRange(this.m_source_repo.Publishers);
                 context.Books.AddRange(this.m_source_repo.Books);

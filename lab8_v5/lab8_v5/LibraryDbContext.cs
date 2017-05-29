@@ -19,9 +19,9 @@ namespace lab8_v5
         public LibraryDbContext()
             : base("name=LibraryDbContext")
         {
-            Database.SetInitializer(
-                new DropCreateDatabaseAlways<LibraryDbContext>()
-            );
+            //Database.SetInitializer(
+            //    new DropCreateDatabaseAlways<LibraryDbContext>()
+            //);
         }
 
         /*-------------------------------------------------------------------*/
