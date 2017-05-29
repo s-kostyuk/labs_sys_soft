@@ -37,7 +37,8 @@ namespace lab7_v1.Controllers
         /// <summary>
         /// Список товаров на складе и количество единиц.
         /// </summary>
-        public IReadOnlyDictionary<StoreItem, int> StorageItems {
+        public IReadOnlyDictionary<StoreItem, int> StorageItems
+        {
             get { return m_items_available; }
         }
 
@@ -62,7 +63,7 @@ namespace lab7_v1.Controllers
         }
 
         /*-------------------------------------------------------------------*/
-        
+
         public Storage(int max_storage_capacity)
         {
             m_capacity = max_storage_capacity;
@@ -82,13 +83,13 @@ namespace lab7_v1.Controllers
 
             int space_needed = get_occupied_space(si, quantity);
 
-            if (space_needed > GetFreeSpace())
+            lock (this) // CC3
             {
-                throw new ArgumentException("Not enough free space", "quantity");
-            }
-            else
-            {
-                lock (this) // CC3
+                if (space_needed > GetFreeSpace())
+                {
+                    throw new ArgumentException("Not enough free space", "quantity");
+                }
+                else
                 {
                     m_items_available[si] = get_current_quantity(si) + quantity;
                 }
@@ -108,22 +109,22 @@ namespace lab7_v1.Controllers
         /// <param name="quantity">Количество единиц товара</param>
         public void ShipProduct(StoreItem si, int quantity)
         {
-            if (! m_items_available.ContainsKey(si))
+            if (!m_items_available.ContainsKey(si))
             {
                 throw new ArgumentException("This product is unavailable", "si");
             }
 
             check_valid_quantity(quantity);
 
-            int current_quantity = get_current_quantity(si);
-            
-            if (quantity > current_quantity)
+            lock (this) // CC3
             {
-                throw new ArgumentException("Not enough product items left", "quantity");
-            }
-            else
-            {
-                lock (this) // CC3
+                int current_quantity = get_current_quantity(si);
+
+                if (quantity > current_quantity)
+                {
+                    throw new ArgumentException("Not enough product items left", "quantity");
+                }
+                else
                 {
                     m_items_available[si] = get_current_quantity(si) - quantity;
                 }
