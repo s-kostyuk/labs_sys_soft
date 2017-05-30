@@ -14,7 +14,9 @@ namespace lab7_v1.Simulators
     {
         /*-------------------------------------------------------------------*/
 
-        public IReadOnlyList<Client> Clients;
+        public IReadOnlyList<Client> Clients {
+            get { return m_clients; }
+        }
 
         /*-------------------------------------------------------------------*/
 

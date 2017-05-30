@@ -72,7 +72,7 @@ namespace lab8_v5
                 this.Authors.Clear();
                 this.Publishers.Clear();
                 
-                foreach (var item in context.Authors)
+                foreach (var item in context.Authors.Local)
                 {
                     this.Authors.Add(item);
                 }

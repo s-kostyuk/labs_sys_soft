@@ -160,6 +160,8 @@ namespace lab7_v1.Controllers
                 
                 m_session_clients.Add(client);
                 CashBalance += order_cost;
+                m_current_session_log.Income += order_cost;
+                m_current_session_log.StorageUsedSpace = m_storage.GetUsedSpace();
             }
         }
 

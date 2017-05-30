@@ -65,7 +65,7 @@ namespace lab7_v1.Simulators
 
         public void StorageRefill()
         {
-            while (m_store.CashBalance > 0)
+            while (true)
             {
                 try
                 {
@@ -80,7 +80,7 @@ namespace lab7_v1.Simulators
                 catch (ArgumentException)
                 {
                     // Failed to refill storage: not enough money
-                    break;
+                    //break;
                 }
                 catch (ThreadInterruptedException)
                 {
@@ -107,7 +107,7 @@ namespace lab7_v1.Simulators
 
         private StoreItem GetRandomProduct()
         {
-            int available_products_count = m_clients.Clients.Count;
+            int available_products_count = m_store.Storage.StorageItems.Count;
 
             if (available_products_count == 0)
             {
@@ -116,7 +116,15 @@ namespace lab7_v1.Simulators
 
             int random_product_number = m_rand.Next(0, available_products_count);
 
-            return m_store.Storage.StorageItems.Keys.ElementAtOrDefault(available_products_count);
+            //try
+            //{
+                return m_store.Storage.StorageItems.Keys.ToList()[random_product_number];
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.StackTrace);
+            //    return null;
+            //}
         }
 
         /*-------------------------------------------------------------------*/
