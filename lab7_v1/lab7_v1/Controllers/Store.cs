@@ -2,7 +2,8 @@
 
 /* FIXME List:
  Consider Change:
- * CC4 - remove try-catch section.
+ * CC4 - remove try-catch section;
+ * CC5 - throw exeption.
  */
 
 /*****************************************************************************/
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using lab7_v1.Model;
 using lab7_v1.Utils;
@@ -25,7 +27,7 @@ namespace lab7_v1.Controllers
     /// </summary>
     public enum StorageStates : int
     {
-        Closed = 0 // explisit is better than implicit
+          Closed = 0 // explisit is better than implicit
         , Open
     }
 
@@ -68,6 +70,12 @@ namespace lab7_v1.Controllers
 
         /*-------------------------------------------------------------------*/
 
+        public IReadOnlyList<StoreLogItem> StoreLog {
+            get { return m_store_log; }
+        }
+
+        /*-------------------------------------------------------------------*/
+
         public Store(Storage storage, int initial_cash_balance)
         {
             this.Storage = storage;
@@ -78,15 +86,63 @@ namespace lab7_v1.Controllers
 
         /*-------------------------------------------------------------------*/
 
-        public void Close() { State = StorageStates.Closed; }
+        public void Close() {
+            if (State != StorageStates.Closed)
+            {
+                State = StorageStates.Closed;
+                CloseSession();
+            }
+            //else // CC5
+            //{
+            //    throw new InvalidOperationException("Unable to close a closed store");
+            //}
+        }
 
         /*-------------------------------------------------------------------*/
 
-        public void Open() { State = StorageStates.Open; }
+        public void Open() {
+            if (State != StorageStates.Open)
+            {
+                State = StorageStates.Open;
+                OpenSession();
+            }
+            //else // CC5
+            //{
+            //    throw new InvalidOperationException("Unable to open an opened store");
+            //}
+        }
 
         /*-------------------------------------------------------------------*/
-        
-        public void Sell(StoreItem si, int quantity=1)
+
+        private void CloseSession()
+        {
+            m_current_session_log.PeriodEnd = DateTime.UtcNow;
+            m_current_session_log.NumberOfClients = m_session_clients.Count;
+            m_store_log.Add(m_current_session_log);
+
+            m_session_clients.Clear();
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        private void OpenSession()
+        {
+            m_current_session_log = new StoreLogItem();
+            m_current_session_log.PeriodStart = DateTime.UtcNow;
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public void Sell(Client client, IDictionary<StoreItem, int> order_items)
+        {
+            foreach (var item in order_items) {
+                this.Sell(client, item.Key, item.Value);
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public void Sell(Client client, StoreItem si, int quantity=1)
         {
             int order_cost = get_selling_order_price(si, quantity);
 
@@ -97,16 +153,23 @@ namespace lab7_v1.Controllers
                 {
                     this.Storage.ShipProduct(si, quantity);
                 }
-                catch (ArgumentOutOfRangeException e)
-                {
-                    throw e;
-                }
                 catch (ArgumentException e)
                 {
-                    throw e;
+                    throw new ArgumentException("Unable to sell product", e);
                 }
-
+                
+                m_session_clients.Add(client);
                 CashBalance += order_cost;
+            }
+        }
+
+        /*-------------------------------------------------------------------*/
+
+        public void Purchase(IDictionary<StoreItem, int> order_items)
+        {
+            foreach (var item in order_items)
+            {
+                this.Purchase(item.Key, item.Value);
             }
         }
 
@@ -140,6 +203,9 @@ namespace lab7_v1.Controllers
 
         private int m_cash_balance;
         private Storage m_storage;
+        private List<StoreLogItem> m_store_log = new List<StoreLogItem>();
+        private StoreLogItem m_current_session_log;
+        private HashSet<Client> m_session_clients = new HashSet<Client>();
 
         /*-------------------------------------------------------------------*/
 
